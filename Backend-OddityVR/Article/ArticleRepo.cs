@@ -23,7 +23,6 @@ namespace Backend_OddityVR.Article
                 "INSERT INTO Article " +
                 "(DatePublished, IsPublished, Title, Body, IsPublic) " +
                 "VALUES (@DatePublished, @IsPublished, @Title, @Body, @IsPublic)";
-
             SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, article);
 
@@ -113,9 +112,9 @@ namespace Backend_OddityVR.Article
         {
             string query =
                 "DELETE FROM Article " +
-                "WHERE Id = @id";
+                "WHERE Id = @Id";
             SqlCommand command = new(query, _database.GetDbConnection());
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();

@@ -1,31 +1,29 @@
 ﻿using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
-namespace Backend_OddityVR.Company
+namespace Backend_OddityVR.Department
 {
-    public class CompanyRepo
+    public class DepartmentRepo
     {
         // properties
         private readonly Database _database;
 
 
         // constructor
-        public CompanyRepo()
+        public DepartmentRepo()
         {
             _database = Database.GetInstance();
         }
 
 
         // create
-        public void CreateNewCompany(Company company)
+        public void CreateDepartement(Department department)
         {
             string query =
-                "INSERT INTO Company " +
-                "(Name, Number, Street, City, PostalCode, Country) " +
-                "VALUES (@Name, @Number, @Street, @City, @PostalCode, @Country)";
-
+                "INSERT INTO Department (Name,Id_Company) " +
+                "VALUES (@Name, @CompanyId)";
             SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, company);
+            AddParameters(command, department);
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
@@ -39,37 +37,35 @@ namespace Backend_OddityVR.Company
 
 
         // get all
-        public List<Company> GetAllCompanies()
+        public List<Department> GetAllDepartments()
         {
             string query =
                 "SELECT * " +
-                "FROM Company";
-
+                "FROM Department";
             SqlCommand command = new(query, _database.GetDbConnection());
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
-            List<Company> companies = ToModel(sqlReader);
+            List<Department> departments = ToModel(sqlReader);
 
             _database.GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
 
-            return companies;
+            return departments;
         }
 
 
         // get id
-        public Company GetCompanyById(int id)
+        public Department GetDepartmentById(int id)
         {
             string query =
                 "SELECT * " +
-                "FROM Company " +
-                "WHERE Id = @Id";
-
+                "FROM Department " +
+                "WHERE ID = @Id";
             SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
@@ -77,27 +73,26 @@ namespace Backend_OddityVR.Company
             _database.GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
-            Company company = ToModel(sqlReader).First();
+            Department department = ToModel(sqlReader).First();
 
             _database.GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
 
-            return company;
+            return department;
         }
 
 
         // update
-        public void UpdateCompany(Company company)
+        public void UpdateDepartment(Department Department)
         {
             string query =
-                "UPDATE Company SET " +
-                "Name = @Name, Number = @Number, Street = @Street, City = @City, PostalCode = @PostalCode, Country = @Country " +
+                "UPDATE Department " +
+                "SET Name = @Name, Id_Company = @CompanyId " +
                 "WHERE Id = @Id";
-
             SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, company);
+            AddParameters(command, Department);
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
@@ -109,14 +104,13 @@ namespace Backend_OddityVR.Company
             command.Connection.Close();
         }
 
-       
+
         // delete
-        public void DeleteCompany(int id)
+        public void DeleteDepartment(int id)
         {
             string query =
-                "DELETE FROM Company " +
+                "DELETE FROM Department " +
                 "WHERE Id = @Id";
-
             SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
@@ -131,38 +125,28 @@ namespace Backend_OddityVR.Company
             command.Connection.Close();
         }
 
-
         // methods
-        private List<Company> ToModel(SqlDataReader reader)
+        public List<Department> ToModel(SqlDataReader reader)
         {
-            List<Company> listCompanies = new();
+            List<Department> listDepartments = new();
             while (reader.Read())
             {
-                listCompanies.Add(new Company()
+                listDepartments.Add(new Department()
                 {
                     Id = int.Parse(reader["Id"].ToString()),
                     Name = reader["Name"].ToString(),
-                    Number = reader["Number"].ToString(),
-                    Street = reader["Street"].ToString(),
-                    City = reader["City"].ToString(),
-                    PostalCode = reader["PostalCode"].ToString(),
-                    Country = reader["Country"].ToString(),
+                    CompanyId = int.Parse(reader["Id_Company"].ToString())
                 });
             }
-            return listCompanies;
+            return listDepartments;
         }
 
-
-        public SqlCommand AddParameters(SqlCommand command, Company company)
+        public SqlCommand AddParameters(SqlCommand command, Department department)
         {
-            command.Parameters.AddWithValue("@Name", company.Name);
-            command.Parameters.AddWithValue("@Number", company.Number);
-            command.Parameters.AddWithValue("@Street", company.Street);
-            command.Parameters.AddWithValue("@City", company.City);
-            command.Parameters.AddWithValue("@PostalCode", company.PostalCode);
-            command.Parameters.AddWithValue("@Country", company.Country);
-            if (company.Id != null)
-                command.Parameters.AddWithValue("@Id", company.Id);
+            command.Parameters.AddWithValue("@Name", department.Name);
+            command.Parameters.AddWithValue("@CompanyId", department.CompanyId);
+            if (department.Id != null)
+                command.Parameters.AddWithValue("@Id", department.Id);
 
             return command;
         }

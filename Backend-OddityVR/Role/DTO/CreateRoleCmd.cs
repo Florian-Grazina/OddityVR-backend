@@ -15,15 +15,7 @@ namespace Backend_OddityVR.Role.DTO
 
 
         // methods
-        public Role ToModel()
-        {
-            return new Role
-            {
-                Name = this.Name
-            };
-        }
-
-        public Role ToModel(int id)
+        public Role ToModel(int id = 0)
         {
             return new Role
             {

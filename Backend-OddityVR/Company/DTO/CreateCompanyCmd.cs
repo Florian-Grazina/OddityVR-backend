@@ -19,20 +19,7 @@ namespace Backend_OddityVR.Company.DTO
 
 
         // methods
-        public Company ToModel()
-        {
-            return new Company
-            {
-                Name = this.Name,
-                Number = this.Number,
-                Street = this.Street,
-                City = this.City,
-                PostalCode = this.PostalCode,
-                Country = this.Country,
-            };
-        }
-
-        public Company ToModel(int id)
+        public Company ToModel(int id = 0)
         {
             return new Company
             {

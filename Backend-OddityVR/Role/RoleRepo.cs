@@ -22,7 +22,7 @@ namespace Backend_OddityVR.Role
         {
             string query =
                 "INSERT INTO Role (Name) " +
-                "VALUES (@name)";
+                "VALUES (@Name)";
             SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, role);
 
@@ -66,9 +66,9 @@ namespace Backend_OddityVR.Role
             string query =
                 "SELECT * " +
                 "FROM Role " +
-                "WHERE ID = @id";
+                "WHERE ID = @Id";
             SqlCommand command = new(query, _database.GetDbConnection());
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
@@ -90,8 +90,8 @@ namespace Backend_OddityVR.Role
         {
             string query =
                 "UPDATE Role " +
-                "SET Name = @name " +
-                "WHERE Id = @id";
+                "SET Name = @Name " +
+                "WHERE Id = @Id";
             SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, role);
 
@@ -111,9 +111,9 @@ namespace Backend_OddityVR.Role
         {
             string query =
                 "DELETE FROM Role " +
-                "WHERE Id = @id";
+                "WHERE Id = @Id";
             SqlCommand command = new(query, _database.GetDbConnection());
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
@@ -142,7 +142,7 @@ namespace Backend_OddityVR.Role
             return listRoles;
         }
 
-        public static SqlCommand AddParameters(SqlCommand command, Role role)
+        public SqlCommand AddParameters(SqlCommand command, Role role)
         {
             command.Parameters.AddWithValue("@Name", role.Name);
             if (role.Id != null)

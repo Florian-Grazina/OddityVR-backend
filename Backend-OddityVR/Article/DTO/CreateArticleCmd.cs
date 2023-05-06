@@ -7,7 +7,7 @@ namespace Backend_OddityVR.Article.DTO
         // properties
         [Required(ErrorMessage = "Article title is mandatory")]
         public string Title { get; set; }
-        public string? Body { get; set; }
+        public string Body { get; set; }
         public DateTime DatePublished { get; set; }
         public bool IsPublished { get; set; }
         public bool IsPublic { get; set; }
@@ -18,19 +18,7 @@ namespace Backend_OddityVR.Article.DTO
 
 
         // methods
-        public Article ToModel()
-        {
-            return new Article
-            {
-                Title = this.Title,
-                Body = this.Body,
-                DatePublished = this.DatePublished,
-                IsPublished = this.IsPublished,
-                IsPublic = this.IsPublic,
-            };
-        }
-
-        public Article ToModel(int id)
+        public Article ToModel(int id = 0)
         {
             return new Article
             {

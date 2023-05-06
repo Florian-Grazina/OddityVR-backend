@@ -1,6 +1,8 @@
 using Backend_OddityVR.Article;
 using Backend_OddityVR.Company;
+using Backend_OddityVR.Prospe;
 using Backend_OddityVR.Role;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
 namespace Backend_OddityVR
@@ -29,6 +31,7 @@ namespace Backend_OddityVR
             builder.Services.AddScoped<RoleAppService>();
             builder.Services.AddScoped<CompanyAppService>();
             builder.Services.AddScoped<ArticleAppService>();
+            builder.Services.AddScoped<ProspeAppService>();
 
             var app = builder.Build();
 
@@ -40,14 +43,17 @@ namespace Backend_OddityVR
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
-            app.Run();
 
+            //app.UseCors(options => options.WithOrigins("http://127.0.0.1:5500").AllowAnyMethod());
+            app.UseCors(builder => builder
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
+
+            app.Run();
         }
     }
 }

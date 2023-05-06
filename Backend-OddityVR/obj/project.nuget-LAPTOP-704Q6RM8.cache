@@ -110,12 +110,6 @@
   ],
   "logs": [
     {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\obj\\project.nuget.cache : The cloud sync provider failed to validate the downloaded data.\r\n"
-    },
-    {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
