@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JCu7ReNcKTpjOSodFnZwbPZGxVSDAypgdk4JCSM0sdudIBZin+dbJOE+k3Ee07Ca7alqh+XIUfuN5Xzg7JHBlQ==",
+  "dgSpecHash": "TW4opK6GuwPedweNdCU7p45/J9nofZMmdRIS5ZeowGMScSTt859n8QVaHf2EDf6+bxa4jT9VtaLRH3Z0/G9TEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+  "projectFilePath": "C:\\Users\\Flori\\OneDrive\\Bureau\\Repo\\Backend-OddityVR\\Backend-OddityVR.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Flori\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",
     "C:\\Users\\Flori\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
@@ -109,12 +109,6 @@
     "C:\\Users\\Flori\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\obj\\project.nuget.cache : The cloud sync provider failed to validate the downloaded data.\r\n"
-    },
     {
       "code": "NU1701",
       "level": "Warning",

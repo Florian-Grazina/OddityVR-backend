@@ -21,7 +21,7 @@ namespace Backend_OddityVR.Role
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewRole([FromBody] CreateRoleCmd newRoleCmd)
+        public void CreateNewRole(CreateRoleCmd newRoleCmd)
         {
             _roleService.CreateNewRole(newRoleCmd);
         }

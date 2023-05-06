@@ -22,7 +22,7 @@ namespace Backend_OddityVR.Article
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewArticle([FromBody] CreateArticleCmd newArticleCmd)
+        public void CreateNewArticle(CreateArticleCmd newArticleCmd)
         {
             _articleService.CreateNewArticle(newArticleCmd);
         }

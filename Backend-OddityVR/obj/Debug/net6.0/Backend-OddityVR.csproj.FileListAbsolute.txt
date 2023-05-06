@@ -80,3 +80,13 @@ C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skill
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\System.Web.Http.Cors.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.csproj.AssemblyReference.cache
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.AssemblyInfoInputs.cache
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.AssemblyInfo.cs
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.csproj.CoreCompileInputs.cache
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.dll
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\refint\Backend-OddityVR.dll
+C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.pdb

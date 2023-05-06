@@ -6359,11 +6359,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+      "projectUniqueName": "C:\\Users\\Flori\\OneDrive\\Bureau\\Repo\\Backend-OddityVR\\Backend-OddityVR.csproj",
       "projectName": "Backend-OddityVR",
-      "projectPath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+      "projectPath": "C:\\Users\\Flori\\OneDrive\\Bureau\\Repo\\Backend-OddityVR\\Backend-OddityVR.csproj",
       "packagesPath": "C:\\Users\\Flori\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\obj\\",
+      "outputPath": "C:\\Users\\Flori\\OneDrive\\Bureau\\Repo\\Backend-OddityVR\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6429,12 +6429,6 @@
     }
   },
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\obj\\project.nuget.cache : The cloud sync provider failed to validate the downloaded data.\r\n"
-    },
     {
       "code": "NU1701",
       "level": "Warning",
