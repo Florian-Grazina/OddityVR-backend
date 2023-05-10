@@ -1,7 +1,6 @@
-using Backend_OddityVR.Article;
-using Backend_OddityVR.Company;
-using Backend_OddityVR.Prospe;
-using Backend_OddityVR.Role;
+using Backend_OddityVR.Associative_Tables.Article;
+using Backend_OddityVR.Associative_Tables.Softskill;
+using Backend_OddityVR.Domain.AppService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
@@ -32,6 +31,13 @@ namespace Backend_OddityVR
             builder.Services.AddScoped<CompanyAppService>();
             builder.Services.AddScoped<ArticleAppService>();
             builder.Services.AddScoped<ProspeAppService>();
+            builder.Services.AddScoped<UserAppService>();
+            builder.Services.AddScoped<DepartmentAppService>();
+            builder.Services.AddScoped<AuthorAppService>();
+            builder.Services.AddScoped<BatchAppService>();
+            builder.Services.AddScoped<TestResultAppService>();
+            builder.Services.AddScoped<SoftskillAppService>();
+            builder.Services.AddScoped<ReferenceAppService>();
 
             var app = builder.Build();
 
