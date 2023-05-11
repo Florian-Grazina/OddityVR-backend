@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Cors;
-using Backend_OddityVR.Domain.AppService;
+﻿using Backend_OddityVR.Domain.AppService;
 using Backend_OddityVR.Domain.DTO;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Controller
 {
@@ -11,11 +11,11 @@ namespace Backend_OddityVR.Controller
     public class ProspeController
     {
         // properties
-        private readonly ProspeAppService _prospeService;
+        private readonly IProspeAppService _prospeService;
 
 
         // constructor
-        public ProspeController(ProspeAppService prospeService)
+        public ProspeController(IProspeAppService prospeService)
         {
             _prospeService = prospeService;
         }

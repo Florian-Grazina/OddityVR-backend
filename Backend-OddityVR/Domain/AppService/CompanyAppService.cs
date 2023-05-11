@@ -1,9 +1,10 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Domain.Repo;
+using System.Reflection;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class CompanyAppService
+    public class CompanyAppService : ICompanyAppService
     {
         // properties
         private readonly CompanyRepo _companyRepo;
@@ -17,10 +18,20 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // create
-        public void CreateNewCompany(CreateCompanyCmd newCompany)
+        public Company CreateNewCompany(CreateCompanyCmd newCompany)
         {
+            PropertyInfo[] properties = newCompany.GetType().GetProperties(); ;
+
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.GetValue(newCompany).ToString() == "")
+                {
+                    throw new Exception("The element " + property.ToString() + " of the form is missing");
+                }
+            }
+
             Company company = newCompany.ToModel();
-            _companyRepo.CreateNewCompany(company);
+            return _companyRepo.CreateNewCompany(company);
         }
 
 

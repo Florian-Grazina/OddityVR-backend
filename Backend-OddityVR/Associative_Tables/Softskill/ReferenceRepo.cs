@@ -1,5 +1,4 @@
-﻿using Backend_OddityVR.Associative_Tables.Article;
-using Backend_OddityVR.Service;
+﻿using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Associative_Tables.Softskill

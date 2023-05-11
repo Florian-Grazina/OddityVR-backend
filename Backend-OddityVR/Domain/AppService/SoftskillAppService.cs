@@ -4,7 +4,7 @@ using BackOddityVR.Domain.Repo;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class SoftskillAppService
+    public class SoftskillAppService : ISoftskillAppService
     {
         // properties
         private readonly SoftskillRepo _softskillRepo;

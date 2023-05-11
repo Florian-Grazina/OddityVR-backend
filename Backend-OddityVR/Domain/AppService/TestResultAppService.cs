@@ -4,7 +4,7 @@ using Backend_OddityVR.Model;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class TestResultAppService
+    public class TestResultAppService : ITestResultAppService
     {
         // properties
         private readonly TestResultRepo _testResultRepo;
@@ -51,7 +51,7 @@ namespace Backend_OddityVR.Domain.AppService
         // delete
         public void DeleteTestResultAsync(int id)
         {
-             _testResultRepo.DeleteTestResult(id);
+            _testResultRepo.DeleteTestResult(id);
         }
     }
 }

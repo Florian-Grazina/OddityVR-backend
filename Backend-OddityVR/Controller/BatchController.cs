@@ -1,6 +1,6 @@
 ﻿using Backend_OddityVR.Domain.AppService;
 using Backend_OddityVR.Domain.DTO;
-using Backend_OddityVR.Model;
+using Backend_OddityVR.Model;   
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Controller
@@ -10,11 +10,11 @@ namespace Backend_OddityVR.Controller
     public class BatchController
     {
         // properties
-        private readonly BatchAppService _batchService;
+        private readonly IBatchAppService _batchService;
 
 
         // constructor
-        public BatchController(BatchAppService batchService)
+        public BatchController(IBatchAppService batchService)
         {
             _batchService = batchService;
         }

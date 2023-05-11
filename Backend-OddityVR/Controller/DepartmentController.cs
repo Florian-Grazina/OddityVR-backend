@@ -9,11 +9,11 @@ namespace Backend_OddityVR.Controller
     public class DepartmentController
     {
         // properties
-        private readonly DepartmentAppService _departmentService;
+        private readonly IDepartmentAppService _departmentService;
 
 
         // constructor
-        public DepartmentController(DepartmentAppService departmentService)
+        public DepartmentController(IDepartmentAppService departmentService)
         {
             _departmentService = departmentService;
         }

@@ -1,11 +1,10 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Domain.Repo;
 using Backend_OddityVR.Model;
-using Newtonsoft.Json;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class BatchAppService
+    public class BatchAppService : IBatchAppService
     {
         // properties
         private readonly BatchRepo _batchRepo;

@@ -9,11 +9,11 @@ namespace Backend_OddityVR.Controller
     public class ArticleController
     {
         // properties
-        private readonly ArticleAppService _articleService;
+        private readonly IArticleAppService _articleService;
 
 
         // constructor
-        public ArticleController(ArticleAppService articleService)
+        public ArticleController(IArticleAppService articleService)
         {
             _articleService = articleService;
         }

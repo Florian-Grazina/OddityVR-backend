@@ -3,7 +3,7 @@ using Backend_OddityVR.Domain.Repo;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class ArticleAppService
+    public class ArticleAppService : IArticleAppService
     {
         // properties
         private readonly ArticleRepo _articleRepo;

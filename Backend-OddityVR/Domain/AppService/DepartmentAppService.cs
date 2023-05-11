@@ -3,7 +3,7 @@ using Backend_OddityVR.Domain.Repo;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class DepartmentAppService
+    public class DepartmentAppService : IDepartmentAppService
     {
         // properties
         private readonly DepartmentRepo _departmentRepo;
@@ -54,7 +54,7 @@ namespace Backend_OddityVR.Domain.AppService
             List<User> listUsers = _userRepo.GetAllUser();
             List<User> usersInDepartment = listUsers.Where(user => user.DepartmentId == id).ToList();
 
-            if(usersInDepartment.Count > 0)
+            if (usersInDepartment.Count > 0)
             {
                 Console.WriteLine("Some users are linked to the department : ");
                 usersInDepartment.ForEach(user => Console.WriteLine(user.Id + " " + user.Email));

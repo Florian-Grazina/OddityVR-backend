@@ -10,11 +10,11 @@ namespace Backend_OddityVR.Controller
     public class TestResultController
     {
         // properties
-        private readonly TestResultAppService _testResultService;
+        private readonly ITestResultAppService _testResultService;
 
 
         // constructor
-        public TestResultController(TestResultAppService TestResultService)
+        public TestResultController(ITestResultAppService TestResultService)
         {
             _testResultService = TestResultService;
         }

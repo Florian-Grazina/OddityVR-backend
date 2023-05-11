@@ -1,5 +1,4 @@
 ﻿using Backend_OddityVR.Service;
-using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
@@ -14,17 +13,5 @@ namespace Backend_OddityVR.Domain.Repo
         {
             _database = Database.GetInstance();
         }
-
-
-        // method
-        //public void ExecuteQuery(SqlCommand command, Func method)
-        //{
-        //    _database.GetDbConnection().Open();
-
-        //    SqlDataReader sqlReader = command.ExecuteReader();
-        //    method(sqlReader);
-
-        //    _database.GetDbConnection().Close();
-        //}
     }
 }

@@ -1,7 +1,6 @@
 using Backend_OddityVR.Associative_Tables.Article;
 using Backend_OddityVR.Associative_Tables.Softskill;
 using Backend_OddityVR.Domain.AppService;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
 namespace Backend_OddityVR
@@ -27,17 +26,15 @@ namespace Backend_OddityVR
                 });
             });
 
-            builder.Services.AddScoped<RoleAppService>();
-            builder.Services.AddScoped<CompanyAppService>();
-            builder.Services.AddScoped<ArticleAppService>();
-            builder.Services.AddScoped<ProspeAppService>();
-            builder.Services.AddScoped<UserAppService>();
-            builder.Services.AddScoped<DepartmentAppService>();
-            builder.Services.AddScoped<AuthorAppService>();
-            builder.Services.AddScoped<BatchAppService>();
-            builder.Services.AddScoped<TestResultAppService>();
-            builder.Services.AddScoped<SoftskillAppService>();
-            builder.Services.AddScoped<ReferenceAppService>();
+            builder.Services.AddSingleton<IArticleAppService, ArticleAppService>();
+            builder.Services.AddSingleton<IBatchAppService, BatchAppService>();
+            builder.Services.AddSingleton<ICompanyAppService, CompanyAppService>();
+            builder.Services.AddSingleton<IDepartmentAppService, DepartmentAppService>();
+            builder.Services.AddSingleton<IProspeAppService, ProspeAppService>();
+            builder.Services.AddSingleton<IRoleAppService, RoleAppService>();
+            builder.Services.AddSingleton<ISoftskillAppService, SoftskillAppService>();
+            builder.Services.AddSingleton<ITestResultAppService, TestResultAppService>();
+            builder.Services.AddSingleton<IUserAppService, UserAppService>();
 
             var app = builder.Build();
 

@@ -9,11 +9,11 @@ namespace Backend_OddityVR.Controller
     public class RoleController
     {
         // properties
-        private readonly RoleAppService _roleService;
+        private readonly IRoleAppService _roleService;
 
 
         // constructor
-        public RoleController(RoleAppService roleService)
+        public RoleController(IRoleAppService roleService)
         {
             _roleService = roleService;
         }

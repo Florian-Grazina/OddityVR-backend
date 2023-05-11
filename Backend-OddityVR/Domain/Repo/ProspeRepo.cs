@@ -1,5 +1,4 @@
-﻿using Backend_OddityVR.Service;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {

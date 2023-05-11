@@ -10,11 +10,11 @@ namespace Backend_OddityVR.Controller
     public class SoftskillController
     {
         // properties
-        private readonly SoftskillAppService _softskillService;
+        private readonly ISoftskillAppService _softskillService;
 
 
         // constructor
-        public SoftskillController(SoftskillAppService softskillService)
+        public SoftskillController(ISoftskillAppService softskillService)
         {
             _softskillService = softskillService;
         }

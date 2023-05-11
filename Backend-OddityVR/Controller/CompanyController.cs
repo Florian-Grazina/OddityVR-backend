@@ -1,19 +1,21 @@
 ﻿using Backend_OddityVR.Domain.AppService;
 using Backend_OddityVR.Domain.DTO;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Controller
 {
     [Route("api/company")]
+    [EnableCors]
     [ApiController]
     public class CompanyController
     {
         // properties
-        private readonly CompanyAppService _companyService;
+        private readonly ICompanyAppService _companyService;
 
 
         // constructor
-        public CompanyController(CompanyAppService companyService)
+        public CompanyController(ICompanyAppService companyService)
         {
             _companyService = companyService;
         }
@@ -22,9 +24,17 @@ namespace Backend_OddityVR.Controller
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewCompany(CreateCompanyCmd newCompanyCmd)
+        public Company CreateNewCompany(CreateCompanyCmd newCompanyCmd)
         {
-            _companyService.CreateNewCompany(newCompanyCmd);
+            try
+            {
+                return _companyService.CreateNewCompany(newCompanyCmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new Company();
+            }
         }
 
 

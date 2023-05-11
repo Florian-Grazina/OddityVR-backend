@@ -3,7 +3,7 @@ using Backend_OddityVR.Domain.Repo;
 
 namespace Backend_OddityVR.Domain.AppService
 {
-    public class ProspeAppService
+    public class ProspeAppService : IProspeAppService
     {
         // properties
         private readonly ProspeRepo _prospeRepo;

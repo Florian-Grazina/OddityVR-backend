@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Backend_OddityVR.Domain.AppService;
+﻿using Backend_OddityVR.Domain.AppService;
 using Backend_OddityVR.Domain.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Controller
 {
@@ -9,11 +9,11 @@ namespace Backend_OddityVR.Controller
     public class UserController
     {
         // properties
-        private readonly UserAppService _userService;
+        private readonly IUserAppService _userService;
 
 
         // constructor
-        public UserController(UserAppService userService)
+        public UserController(IUserAppService userService)
         {
             _userService = userService;
         }

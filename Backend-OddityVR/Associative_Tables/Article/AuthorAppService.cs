@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Backend_OddityVR.Associative_Tables.Article
+﻿namespace Backend_OddityVR.Associative_Tables.Article
 {
     public class AuthorAppService
     {

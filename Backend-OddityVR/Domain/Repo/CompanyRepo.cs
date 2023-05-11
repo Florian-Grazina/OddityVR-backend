@@ -5,11 +5,12 @@ namespace Backend_OddityVR.Domain.Repo
     public class CompanyRepo : AbstractRepo
     {
         // create
-        public void CreateNewCompany(Company company)
+        public Company CreateNewCompany(Company company)
         {
             string query =
                 "INSERT INTO Company " +
                 "(Name, Number, Street, City, Postal_Code, Country) " +
+                "OUTPUT INSERTED.Id " + 
                 "VALUES (@Name, @Number, @Street, @City, @PostalCode, @Country)";
 
             SqlCommand command = new(query, _database.GetDbConnection());
@@ -18,11 +19,12 @@ namespace Backend_OddityVR.Domain.Repo
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            int companyId = (int) command.ExecuteScalar();
 
             _database.GetDbConnection().Close();
-            sqlReader.Close();
             command.Connection.Close();
+
+            return GetCompanyById(companyId);
         }
 
 
