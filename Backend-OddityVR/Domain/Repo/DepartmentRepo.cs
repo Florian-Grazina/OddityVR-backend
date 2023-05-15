@@ -5,10 +5,12 @@ namespace Backend_OddityVR.Domain.Repo
     public class DepartmentRepo : AbstractRepo
     {
         // create
-        public void CreateNewDepartment(Department department)
+        public Department CreateNewDepartment(Department department)
         {
             string query =
-                "INSERT INTO Department (Name,Id_Company) " +
+                "INSERT INTO Department " +
+                "(Name, Id_Company) " +
+                "OUTPUT INSERTED.Id " +
                 "VALUES (@Name, @CompanyId)";
             SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, department);
@@ -16,11 +18,12 @@ namespace Backend_OddityVR.Domain.Repo
             // Starting connection with DB and executing
             _database.GetDbConnection().Open();
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            int departmentId = (int) command.ExecuteScalar();
 
             _database.GetDbConnection().Close();
-            sqlReader.Close();
             command.Connection.Close();
+
+            return GetDepartmentById(departmentId);
         }
 
 
@@ -69,6 +72,32 @@ namespace Backend_OddityVR.Domain.Repo
             command.Connection.Close();
 
             return department;
+        }
+
+
+        // get by company id
+        public List<Department> GetDepartmentByCompanyId(int id)
+        {
+            string query =
+                "SELECT * FROM Department " +
+                "INNER JOIN Company " +
+                "ON Department.Id_Company = Company.Id " +
+                "WHERE Id_Company = @Id";
+            SqlCommand command = new(query, _database.GetDbConnection());
+            command.Parameters.AddWithValue("@Id", id);
+
+            // Starting connection with DB and executing
+            _database.GetDbConnection().Open();
+
+            SqlDataReader sqlReader = command.ExecuteReader();
+            List<Department> departments = ToModel(sqlReader);
+
+            _database.GetDbConnection().Close();
+
+            sqlReader.Close();
+            command.Connection.Close();
+
+            return departments;
         }
 
 

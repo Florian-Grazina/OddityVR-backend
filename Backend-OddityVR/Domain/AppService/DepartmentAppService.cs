@@ -1,5 +1,7 @@
-﻿using Backend_OddityVR.Domain.DTO;
+﻿using Backend_OddityVR.Domain.DTO.CompanyDTO;
+using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Backend_OddityVR.Domain.Repo;
+using System.Reflection;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -19,10 +21,20 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // create
-        public void CreateNewDepartment(CreateDepartmentCmd newDepartment)
+        public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartment)
         {
-            Department department = newDepartment.ToModel();
-            _departmentRepo.CreateNewDepartment(department);
+            PropertyInfo[] properties = newDepartment.GetType().GetProperties(); ;
+
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.GetValue(newDepartment).ToString() == "")
+                {
+                    throw new Exception("The element " + property.ToString() + " of the form is missing");
+                }
+            }
+
+            Department departmentToReturn = _departmentRepo.CreateNewDepartment(newDepartment.ToModel());
+            return new DepartmentDetailsDTO(departmentToReturn, 0);
         }
 
 
@@ -30,6 +42,24 @@ namespace Backend_OddityVR.Domain.AppService
         public List<Department> GetAllDepartments()
         {
             return _departmentRepo.GetAllDepartments();
+        }
+
+        public List<DepartmentDetailsDTO> GetAllDepartmentsWithCompanyId(int id)
+        {
+            List<Department> departments = _departmentRepo.GetDepartmentByCompanyId(id);
+            List<User> users = _userRepo.GetAllUserFromCompanyId(id);
+
+            List<DepartmentDetailsDTO> departmentsToReturn = new();
+
+            foreach (Department department in departments)
+            {
+                departmentsToReturn.Add(new DepartmentDetailsDTO(
+                    department,
+                    users.Where(user => user.DepartmentId == department.Id).ToList().Count)
+                    );
+            }
+
+            return departmentsToReturn;
         }
 
 
@@ -41,10 +71,13 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // update
-        public void UpdateDepartment(CreateDepartmentCmd updateDepartment, int id)
+        public DepartmentDetailsDTO UpdateDepartment(Department department)
         {
-            Department department = updateDepartment.ToModel(id);
             _departmentRepo.UpdateDepartment(department);
+            int numberOfEmployees = _userRepo.GetAllUserFromDepartmentId(department.Id).Count;
+            DepartmentDetailsDTO departmentToReturn = new(department, numberOfEmployees);
+
+            return departmentToReturn;
         }
 
 

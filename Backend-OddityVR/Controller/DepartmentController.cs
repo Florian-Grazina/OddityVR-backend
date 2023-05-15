@@ -1,5 +1,5 @@
 ﻿using Backend_OddityVR.Domain.AppService;
-using Backend_OddityVR.Domain.DTO;
+using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Controller
@@ -22,9 +22,9 @@ namespace Backend_OddityVR.Controller
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewDepartment(CreateDepartmentCmd newDepartmentCmd)
+        public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartmentCmd)
         {
-            _departmentService.CreateNewDepartment(newDepartmentCmd);
+            return _departmentService.CreateNewDepartment(newDepartmentCmd);
         }
 
 
@@ -44,11 +44,19 @@ namespace Backend_OddityVR.Controller
         }
 
 
-        [Route("update/{id:int}")]
-        [HttpPut]
-        public void UpdateDepartment(CreateDepartmentCmd updateDepartmentCmd, int id)
+        [Route("get_all_from_company/{id:int}")]
+        [HttpGet]
+        public List<DepartmentDetailsDTO> GetAllDepartmentsWithCompanyId(int id)
         {
-            _departmentService.UpdateDepartment(updateDepartmentCmd, id);
+            return _departmentService.GetAllDepartmentsWithCompanyId(id);
+        }
+
+
+        [Route("update")]
+        [HttpPut]
+        public DepartmentDetailsDTO UpdateDepartment(Department department)
+        {
+            return _departmentService.UpdateDepartment(department);
         }
 
 

@@ -83,7 +83,7 @@ namespace Backend_OddityVR.Domain.Repo
         {
             string query =
                 "UPDATE Company SET " +
-                "Name = @Name, Number = @Number, Street = @Street, City = @City, PostalCode = @Postal_Code, Country = @Country " +
+                "Name = @Name, Number = @Number, Street = @Street, City = @City, Postal_Code = @PostalCode, Country = @Country " +
                 "WHERE Id = @Id";
 
             SqlCommand command = new(query, _database.GetDbConnection());

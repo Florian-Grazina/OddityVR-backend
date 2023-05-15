@@ -1,4 +1,5 @@
-﻿using Backend_OddityVR.Domain.DTO;
+﻿using Backend_OddityVR.Domain.DTO.CompanyDTO;
+using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Backend_OddityVR.Domain.Repo;
 using System.Reflection;
 
@@ -8,17 +9,21 @@ namespace Backend_OddityVR.Domain.AppService
     {
         // properties
         private readonly CompanyRepo _companyRepo;
+        private readonly DepartmentRepo _departmentRepo;
+        private readonly UserRepo _userRepo;
 
 
         // constructor
-        public CompanyAppService()
+        public CompanyAppService(CompanyRepo companyRepo, DepartmentRepo departmentRepo, UserRepo userRepo)
         {
-            _companyRepo = new();
+            _companyRepo = companyRepo;
+            _departmentRepo = departmentRepo;
+            _userRepo = userRepo;
         }
 
 
         // create
-        public Company CreateNewCompany(CreateCompanyCmd newCompany)
+        public CompaniesDetailsDTO CreateNewCompany(CreateCompanyCmd newCompany)
         {
             PropertyInfo[] properties = newCompany.GetType().GetProperties(); ;
 
@@ -30,30 +35,48 @@ namespace Backend_OddityVR.Domain.AppService
                 }
             }
 
-            Company company = newCompany.ToModel();
-            return _companyRepo.CreateNewCompany(company);
+            Company companytoReturn = _companyRepo.CreateNewCompany(newCompany.ToModel());
+            return new CompaniesDetailsDTO(companytoReturn, 0);
         }
 
 
         // get all
-        public List<Company> GetAllCompanies()
+        public List<CompaniesDetailsDTO> GetAllCompanies()
         {
-            return _companyRepo.GetAllCompanies();
+            List<Company> companies = _companyRepo.GetAllCompanies();
+            List<Department> departments = _departmentRepo.GetAllDepartments();
+            List<CompaniesDetailsDTO> toReturn = new ();
+
+            foreach (Company company in companies)
+            {
+                int numberOfDepartments = departments.Where(dep => dep.CompanyId == company.Id).ToList().Count;
+
+                toReturn.Add(new CompaniesDetailsDTO(company, numberOfDepartments));
+            }
+            return toReturn;
         }
 
 
         // get id
-        public Company GetCompanyById(int id)
+        public CompaniesDetailsDTO GetCompanyById(int id)
         {
-            return _companyRepo.GetCompanyById(id);
+            Company company = _companyRepo.GetCompanyById(id);
+            List<Department> departments = _departmentRepo.GetDepartmentByCompanyId(id);
+
+            CompaniesDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
+
+            return companyToReturn;
         }
 
 
         // update
-        public void UpdateCompany(CreateCompanyCmd updateCompanyCmd, int id)
+        public CompaniesDetailsDTO UpdateCompany(Company company)
         {
-            Company company = updateCompanyCmd.ToModel(id);
             _companyRepo.UpdateCompany(company);
+            int numberOfDepartments = _departmentRepo.GetDepartmentByCompanyId(company.Id).Count;
+            CompaniesDetailsDTO companyToReturn = new(company, numberOfDepartments);
+
+            return companyToReturn;
         }
 
 

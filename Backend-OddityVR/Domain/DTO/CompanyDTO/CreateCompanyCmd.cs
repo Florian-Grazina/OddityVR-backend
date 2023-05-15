@@ -1,11 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Backend_OddityVR.Domain.DTO
+﻿namespace Backend_OddityVR.Domain.DTO.CompanyDTO
 {
     public class CreateCompanyCmd
     {
         // properties
-        [Required(ErrorMessage = "Company name is mandatory")]
         public string Name { get; set; }
         public string Number { get; set; }
         public string Street { get; set; }
@@ -19,11 +16,10 @@ namespace Backend_OddityVR.Domain.DTO
 
 
         // methods
-        public Company ToModel(int id = 0)
+        public Company ToModel()
         {
             return new Company
             {
-                Id = id,
                 Name = Name,
                 Number = Number,
                 Street = Street,

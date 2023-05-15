@@ -1,13 +1,13 @@
-﻿using Backend_OddityVR.Domain.DTO;
+﻿using Backend_OddityVR.Domain.DTO.CompanyDTO;
 
 namespace Backend_OddityVR.Domain.AppService
 {
     public interface ICompanyAppService
     {
-        public Company CreateNewCompany(CreateCompanyCmd newCompany);
-        public List<Company> GetAllCompanies();
-        public Company GetCompanyById(int id);
-        public void UpdateCompany(CreateCompanyCmd updateCompanyCmd, int id);
+        public CompaniesDetailsDTO CreateNewCompany(CreateCompanyCmd newCompany);
+        public List<CompaniesDetailsDTO> GetAllCompanies();
+        public CompaniesDetailsDTO GetCompanyById(int id);
+        public CompaniesDetailsDTO UpdateCompany(Company company);
         public void DeleteCompany(int id);
     }
 }

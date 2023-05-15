@@ -1,5 +1,5 @@
 ﻿using Backend_OddityVR.Domain.AppService;
-using Backend_OddityVR.Domain.DTO;
+using Backend_OddityVR.Domain.DTO.CompanyDTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +24,7 @@ namespace Backend_OddityVR.Controller
         // methods
         [Route("create")]
         [HttpPost]
-        public Company CreateNewCompany(CreateCompanyCmd newCompanyCmd)
+        public CompaniesDetailsDTO CreateNewCompany(CreateCompanyCmd newCompanyCmd)
         {
             try
             {
@@ -33,14 +33,14 @@ namespace Backend_OddityVR.Controller
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new Company();
+                return new CompaniesDetailsDTO();
             }
         }
 
 
         [Route("get_all")]
         [HttpGet]
-        public List<Company> GetAllCompanies()
+        public List<CompaniesDetailsDTO> GetAllCompanies()
         {
             return _companyService.GetAllCompanies();
         }
@@ -48,17 +48,17 @@ namespace Backend_OddityVR.Controller
 
         [Route("get/{id:int}")]
         [HttpGet]
-        public Company GetCompany(int id)
+        public CompaniesDetailsDTO GetCompany(int id)
         {
             return _companyService.GetCompanyById(id);
         }
 
 
-        [Route("update/{id:int}")]
+        [Route("update")]
         [HttpPut]
-        public void UpdateCompany(CreateCompanyCmd newCompanyCmd, int id)
+        public CompaniesDetailsDTO UpdateCompany(Company company)
         {
-            _companyService.UpdateCompany(newCompanyCmd, id);
+            return _companyService.UpdateCompany(company);
         }
 
 

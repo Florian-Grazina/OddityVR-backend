@@ -50,6 +50,60 @@ namespace Backend_OddityVR.Domain.Repo
         }
 
 
+        // get all from company
+        public List<User> GetAllUserFromCompanyId(int id)
+        {
+            string query =
+                "SELECT * " +
+                "FROM End_User " +
+                "INNER JOIN Department " +
+                "ON Department.Id = End_User.Id_Department " +
+                "WHERE Department.Id_Company = @Id";
+
+            SqlCommand command = new(query, _database.GetDbConnection());
+            command.Parameters.AddWithValue("@Id", id);
+
+            // Starting connection with DB and executing
+            _database.GetDbConnection().Open();
+
+            SqlDataReader sqlReader = command.ExecuteReader();
+            List<User> listUsers = ToModel(sqlReader);
+
+            _database.GetDbConnection().Close();
+
+            sqlReader.Close();
+            command.Connection.Close();
+
+            return listUsers;
+        }
+
+
+        // get all from company
+        public List<User> GetAllUserFromDepartmentId(int id)
+        {
+            string query =
+                "SELECT * " +
+                "FROM End_User " +
+                "WHERE Id_Department = @Id";
+
+            SqlCommand command = new(query, _database.GetDbConnection());
+            command.Parameters.AddWithValue("@Id", id);
+
+            // Starting connection with DB and executing
+            _database.GetDbConnection().Open();
+
+            SqlDataReader sqlReader = command.ExecuteReader();
+            List<User> listUsers = ToModel(sqlReader);
+
+            _database.GetDbConnection().Close();
+
+            sqlReader.Close();
+            command.Connection.Close();
+
+            return listUsers;
+        }
+
+
         // get id
         public User GetUserById(int id)
         {

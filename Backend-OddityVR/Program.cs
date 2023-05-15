@@ -1,6 +1,7 @@
 using Backend_OddityVR.Associative_Tables.Article;
 using Backend_OddityVR.Associative_Tables.Softskill;
 using Backend_OddityVR.Domain.AppService;
+using Backend_OddityVR.Domain.Repo;
 using Microsoft.OpenApi.Models;
 
 namespace Backend_OddityVR
@@ -35,6 +36,10 @@ namespace Backend_OddityVR
             builder.Services.AddSingleton<ISoftskillAppService, SoftskillAppService>();
             builder.Services.AddSingleton<ITestResultAppService, TestResultAppService>();
             builder.Services.AddSingleton<IUserAppService, UserAppService>();
+
+            builder.Services.AddSingleton<CompanyRepo>();
+            builder.Services.AddSingleton<DepartmentRepo>();
+            builder.Services.AddSingleton<UserRepo>();
 
             var app = builder.Build();
 

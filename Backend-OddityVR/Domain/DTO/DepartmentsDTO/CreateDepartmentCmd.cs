@@ -1,11 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Backend_OddityVR.Domain.DTO
+﻿namespace Backend_OddityVR.Domain.DTO.DepartmentsDTO
 {
     public class CreateDepartmentCmd
     {
         // properties
-        [Required(ErrorMessage = "Department name is mandatory")]
         public string Name { get; set; }
         public int CompanyId { get; set; }
 
