@@ -11,9 +11,9 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public BatchAppService()
+        public BatchAppService(BatchRepo batchRepo)
         {
-            _batchRepo = new();
+            _batchRepo = batchRepo;
         }
 
 

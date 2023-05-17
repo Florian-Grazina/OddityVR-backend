@@ -1,6 +1,8 @@
-﻿namespace Backend_OddityVR.Domain.DTO.CompanyDTO
+﻿using Backend_OddityVR.Model;
+
+namespace Backend_OddityVR.Domain.DTO.CompanyDTO
 {
-    public class CreateCompanyCmd
+    public class CreateCompanyCmd : ICmdAndDTO
     {
         // properties
         public string Name { get; set; }
@@ -16,7 +18,7 @@
 
 
         // methods
-        public Company ToModel()
+        public IModel ToModel()
         {
             return new Company
             {

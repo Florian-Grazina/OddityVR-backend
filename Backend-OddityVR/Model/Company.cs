@@ -1,6 +1,8 @@
-﻿namespace Backend_OddityVR
+﻿using Backend_OddityVR.Model;
+
+namespace Backend_OddityVR
 {
-    public class Company
+    public class Company : IModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Domain.Repo;
 using Backend_OddityVR.Model;
+using Backend_OddityVR.Service;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -11,9 +12,9 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public TestResultAppService()
+        public TestResultAppService(TestResultRepo testRepoResult)
         {
-            _testResultRepo = new();
+            _testResultRepo = testRepoResult;
         }
 
 

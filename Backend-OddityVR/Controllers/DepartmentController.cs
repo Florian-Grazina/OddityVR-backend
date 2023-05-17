@@ -2,7 +2,7 @@
 using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend_OddityVR.Controller
+namespace Backend_OddityVR.Controllers
 {
     [Route("api/department")]
     [ApiController]
@@ -38,7 +38,7 @@ namespace Backend_OddityVR.Controller
 
         [Route("get/{id:int}")]
         [HttpGet]
-        public Department GetDepartmentById(int id)
+        public DepartmentDetailsDTO GetDepartmentById(int id)
         {
             return _departmentService.GetDepartmentById(id);
         }
@@ -54,7 +54,7 @@ namespace Backend_OddityVR.Controller
 
         [Route("update")]
         [HttpPut]
-        public DepartmentDetailsDTO UpdateDepartment(Department department)
+        public DepartmentDetailsDTO UpdateDepartment(UpdateDepartmentCmd department)
         {
             return _departmentService.UpdateDepartment(department);
         }
@@ -64,7 +64,7 @@ namespace Backend_OddityVR.Controller
         [HttpDelete]
         public void DeleteDepartment(int id)
         {
-            _departmentService.DeleteDepartmentAsync(id);
+            _departmentService.DeleteDepartment(id);
         }
     }
 }

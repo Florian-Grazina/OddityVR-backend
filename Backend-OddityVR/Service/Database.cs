@@ -9,26 +9,29 @@ namespace Backend_OddityVR.Service
         // DAO Factory
 
         // properties
-        const string DataSource = @"Data Source=LAPTOP-704Q6RM8\SQLEXPRESS;Initial Catalog=Soft_Skills;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private static Database Instance;
+        private static readonly Database _instance;
 
         private static SqlConnection DbConnection;
 
+        private static IConfiguration _configuration;
+
 
         // constructor
-        private Database()
+        public Database(IConfiguration config)
         {
-            DbConnection = new(DataSource);
+            _configuration = config;
+            DbConnection = new(_configuration["DataSource"]);
+            DbConnection.Open();
+            Console.WriteLine("Connection opened");
         }
 
 
         // methods
-        public static Database GetInstance()
-        {
-            Instance ??= new();
-            return Instance;
-        }
+        //public static Database Get_instance()
+        //{
+        //    return _instance;
+        //}
 
         public SqlConnection GetDbConnection()
         {

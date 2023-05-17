@@ -1,5 +1,6 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Model;
+using Backend_OddityVR.Service;
 using BackOddityVR.Domain.Repo;
 
 namespace Backend_OddityVR.Domain.AppService
@@ -11,9 +12,9 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public SoftskillAppService()
+        public SoftskillAppService(SoftskillRepo softskillRepo)
         {
-            _softskillRepo = new();
+            _softskillRepo = softskillRepo;
         }
 
 

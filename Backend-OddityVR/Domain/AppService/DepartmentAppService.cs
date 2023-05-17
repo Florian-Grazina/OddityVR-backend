@@ -1,6 +1,7 @@
 ﻿using Backend_OddityVR.Domain.DTO.CompanyDTO;
 using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 using System.Reflection;
 
 namespace Backend_OddityVR.Domain.AppService
@@ -13,27 +14,26 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public DepartmentAppService()
+        public DepartmentAppService(DepartmentRepo departmentRepo, UserRepo userRepo)
         {
-            _departmentRepo = new();
-            _userRepo = new();
+            _departmentRepo = departmentRepo;
+            _userRepo = userRepo;
         }
 
 
         // create
         public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartment)
         {
-            PropertyInfo[] properties = newDepartment.GetType().GetProperties(); ;
-
-            foreach (PropertyInfo property in properties)
+            try
             {
-                if (property.GetValue(newDepartment).ToString() == "")
-                {
-                    throw new Exception("The element " + property.ToString() + " of the form is missing");
-                }
+                CmdFieldsChecker.Check(newDepartment);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
-            Department departmentToReturn = _departmentRepo.CreateNewDepartment(newDepartment.ToModel());
+            Department departmentToReturn = _departmentRepo.CreateNewDepartment((Department)newDepartment.ToModel());
             return new DepartmentDetailsDTO(departmentToReturn, 0);
         }
 
@@ -58,31 +58,44 @@ namespace Backend_OddityVR.Domain.AppService
                     users.Where(user => user.DepartmentId == department.Id).ToList().Count)
                     );
             }
-
             return departmentsToReturn;
         }
 
 
         // get id
-        public Department GetDepartmentById(int id)
+        public DepartmentDetailsDTO GetDepartmentById(int id)
         {
-            return _departmentRepo.GetDepartmentById(id);
+            Department department = _departmentRepo.GetDepartmentById(id);
+            int numberOfEmployees = _userRepo.GetAllUsersFromDepartmentId(id).Count;
+
+            return new DepartmentDetailsDTO(department, numberOfEmployees);
         }
 
 
         // update
-        public DepartmentDetailsDTO UpdateDepartment(Department department)
+        public DepartmentDetailsDTO UpdateDepartment(UpdateDepartmentCmd departmentCmd)
         {
-            _departmentRepo.UpdateDepartment(department);
-            int numberOfEmployees = _userRepo.GetAllUserFromDepartmentId(department.Id).Count;
-            DepartmentDetailsDTO departmentToReturn = new(department, numberOfEmployees);
+            try
+            {
+                CmdFieldsChecker.Check(departmentCmd);
 
-            return departmentToReturn;
+                Department updatedDepartment = (Department)departmentCmd.ToModel();
+                int numberOfEmployees = _userRepo.GetAllUsersFromDepartmentId(updatedDepartment.Id).Count;
+
+                _departmentRepo.UpdateDepartment(updatedDepartment);
+                return new DepartmentDetailsDTO(updatedDepartment, numberOfEmployees);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return new DepartmentDetailsDTO();
         }
 
 
         // delete
-        public void DeleteDepartmentAsync(int id)
+        public void DeleteDepartment(int id)
         {
             List<User> listUsers = _userRepo.GetAllUser();
             List<User> usersInDepartment = listUsers.Where(user => user.DepartmentId == id).ToList();

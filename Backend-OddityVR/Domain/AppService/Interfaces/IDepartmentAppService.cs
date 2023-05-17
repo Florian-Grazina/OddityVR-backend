@@ -6,9 +6,9 @@ namespace Backend_OddityVR.Domain.AppService
     {
         public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartment);
         public List<Department> GetAllDepartments();
-        public Department GetDepartmentById(int id);
+        public DepartmentDetailsDTO GetDepartmentById(int id);
         public List<DepartmentDetailsDTO> GetAllDepartmentsWithCompanyId(int id);
-        public DepartmentDetailsDTO UpdateDepartment(Department department);
-        public void DeleteDepartmentAsync(int id);
+        public DepartmentDetailsDTO UpdateDepartment(UpdateDepartmentCmd department);
+        public void DeleteDepartment(int id);
     }
 }

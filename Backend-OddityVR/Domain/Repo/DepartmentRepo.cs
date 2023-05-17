@@ -1,9 +1,16 @@
-﻿using System.Data.SqlClient;
+﻿using Backend_OddityVR.Service;
+using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
     public class DepartmentRepo : AbstractRepo
     {
+        // constructor
+        public DepartmentRepo(Database database) : base(database)
+        {
+        }
+
+
         // create
         public Department CreateNewDepartment(Department department)
         {
@@ -12,16 +19,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "(Name, Id_Company) " +
                 "OUTPUT INSERTED.Id " +
                 "VALUES (@Name, @CompanyId)";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, department);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            int departmentId = (int) command.ExecuteScalar();
-
-            _database.GetDbConnection().Close();
-            command.Connection.Close();
+            int departmentId = (int)command.ExecuteScalar();
 
             return GetDepartmentById(departmentId);
         }
@@ -33,18 +35,11 @@ namespace Backend_OddityVR.Domain.Repo
             string query =
                 "SELECT * " +
                 "FROM Department";
-            SqlCommand command = new(query, _database.GetDbConnection());
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, _database.GetDbConnection());
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<Department> departments = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return departments;
         }
@@ -57,19 +52,12 @@ namespace Backend_OddityVR.Domain.Repo
                 "SELECT * " +
                 "FROM Department " +
                 "WHERE ID = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             Department department = ToModel(sqlReader).First();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return department;
         }
@@ -83,19 +71,12 @@ namespace Backend_OddityVR.Domain.Repo
                 "INNER JOIN Company " +
                 "ON Department.Id_Company = Company.Id " +
                 "WHERE Id_Company = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<Department> departments = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return departments;
         }
@@ -108,17 +89,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "UPDATE Department " +
                 "SET Name = @Name, Id_Company = @CompanyId " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, Department);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -128,18 +103,11 @@ namespace Backend_OddityVR.Domain.Repo
             string query =
                 "DELETE FROM Department " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
         // methods

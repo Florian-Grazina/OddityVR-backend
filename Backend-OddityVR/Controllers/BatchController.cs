@@ -3,7 +3,7 @@ using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Model;   
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend_OddityVR.Controller
+namespace Backend_OddityVR.Controllers
 {
     [Route("api/batch")]
     [ApiController]

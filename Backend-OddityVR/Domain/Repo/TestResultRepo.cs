@@ -1,10 +1,17 @@
 ﻿using Backend_OddityVR.Model;
+using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
     public class TestResultRepo : AbstractRepo
     {
+        // constructor
+        public TestResultRepo(Database database) : base(database)
+        {
+        }
+
+
         // create
         public void CreateNewTestResult(TestResult TestResult)
         {

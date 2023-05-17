@@ -8,9 +8,9 @@ namespace Backend_OddityVR.Associative_Tables.Softskill
 
 
         // constructor
-        public ReferenceAppService()
+        public ReferenceAppService(ReferenceRepo referenceRepo)
         {
-            _referenceRepo = new();
+            _referenceRepo = referenceRepo;
         }
 
 

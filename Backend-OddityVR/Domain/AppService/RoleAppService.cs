@@ -1,5 +1,6 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -10,9 +11,9 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public RoleAppService()
+        public RoleAppService(RoleRepo roleRepo)
         {
-            _roleRepo = new();
+            _roleRepo = roleRepo;
         }
 
 

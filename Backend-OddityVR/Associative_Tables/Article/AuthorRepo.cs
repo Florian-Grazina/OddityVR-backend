@@ -1,18 +1,13 @@
-﻿using Backend_OddityVR.Service;
+﻿using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Associative_Tables.Article
 {
-    public class AuthorRepo
+    public class AuthorRepo : AbstractRepo
     {
-        // properties
-        private readonly Database _database;
-
-
-        // constructor
-        public AuthorRepo()
+        public AuthorRepo(Database database) : base(database)
         {
-            _database = Database.GetInstance();
         }
 
 

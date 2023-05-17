@@ -1,8 +1,8 @@
 ﻿using Backend_OddityVR.Domain.AppService;
-using Backend_OddityVR.Domain.DTO;
+using Backend_OddityVR.Domain.DTO.UserDTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend_OddityVR.Controller
+namespace Backend_OddityVR.Controllers
 {
     [Route("api/user")]
     [ApiController]
@@ -22,9 +22,9 @@ namespace Backend_OddityVR.Controller
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewUser(CreateUserCmd newUserCmd)
+        public User CreateNewUser(CreateUserCmd newUserCmd)
         {
-            _userService.CreateNewUser(newUserCmd);
+            return _userService.CreateNewUser(newUserCmd);
         }
 
 
@@ -33,6 +33,14 @@ namespace Backend_OddityVR.Controller
         public List<User> GetAllUser()
         {
             return _userService.GetAllUsers();
+        }
+
+
+        [Route("get_all_from_department/{id:int}")]
+        [HttpGet]
+        public List<User> GetAllUsersFromDepartmentId(int id)
+        {
+            return _userService.GetAllUsersFromDepartmentId(id);
         }
 
 
@@ -46,9 +54,9 @@ namespace Backend_OddityVR.Controller
 
         [Route("update/{id:int}")]
         [HttpPut]
-        public void UpdateUser(CreateUserCmd newUserCmd, int id)
+        public User UpdateUser(UpdateUserCmd newUserCmd)
         {
-            _userService.UpdateUser(newUserCmd, id);
+            return _userService.UpdateUser(newUserCmd);
         }
 
 

@@ -1,6 +1,8 @@
-﻿namespace Backend_OddityVR.Domain.DTO
+﻿using Backend_OddityVR.Model;
+
+namespace Backend_OddityVR.Domain.DTO.UserDTO
 {
-    public class CreateUserCmd
+    public class CreateUserCmd : ICmdAndDTO
     {
         // properties
         public string Email { get; set; }
@@ -15,7 +17,7 @@
 
 
         // method
-        public User ToModel(int id = 0)
+        public IModel ToModel()
         {
             return new User
             {

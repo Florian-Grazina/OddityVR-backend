@@ -1,11 +1,18 @@
 ﻿using Backend_OddityVR.Domain.Repo;
 using Backend_OddityVR.Model;
+using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace BackOddityVR.Domain.Repo
 {
     public class SoftskillRepo : AbstractRepo
     {
+        // constructor
+        public SoftskillRepo(Database database) : base(database)
+        {
+        }
+
+
         // create
         public void CreateNewSoftskill(Softskill newSoftskill)
         {

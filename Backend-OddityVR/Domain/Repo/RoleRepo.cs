@@ -1,9 +1,16 @@
-﻿using System.Data.SqlClient;
+﻿using Backend_OddityVR.Service;
+using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
     public class RoleRepo : AbstractRepo
     {
+        // constructor
+        public RoleRepo(Database database) : base(database)
+        {
+        }
+
+
         // create
         public void CreateNewRole(Role role)
         {

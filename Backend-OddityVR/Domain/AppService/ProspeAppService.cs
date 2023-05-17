@@ -1,5 +1,6 @@
 ﻿using Backend_OddityVR.Domain.DTO;
 using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -10,9 +11,9 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public ProspeAppService()
+        public ProspeAppService(ProspeRepo prospeRepo)
         {
-            _prospeRepo = new();
+            _prospeRepo = prospeRepo;
         }
 
 

@@ -1,18 +1,13 @@
-﻿using Backend_OddityVR.Service;
+﻿using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Associative_Tables.Softskill
 {
-    public class ReferenceRepo
+    public class ReferenceRepo : AbstractRepo
     {
-        // properties
-        private readonly Database _database;
-
-
-        // constructor
-        public ReferenceRepo()
+        public ReferenceRepo(Database database) : base(database)
         {
-            _database = Database.GetInstance();
         }
 
 

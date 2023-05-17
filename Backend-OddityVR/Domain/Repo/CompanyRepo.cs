@@ -1,9 +1,16 @@
-﻿using System.Data.SqlClient;
+﻿using Backend_OddityVR.Service;
+using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
     public class CompanyRepo : AbstractRepo
     {
+        // constructor
+        public CompanyRepo(Database database) : base(database)
+        {
+        }
+
+
         // create
         public Company CreateNewCompany(Company company)
         {
@@ -13,17 +20,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "OUTPUT INSERTED.Id " + 
                 "VALUES (@Name, @Number, @Street, @City, @PostalCode, @Country)";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, company);
+            int companyId = (int)command.ExecuteScalar();
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            int companyId = (int) command.ExecuteScalar();
-
-            _database.GetDbConnection().Close();
-            command.Connection.Close();
-
+            Console.WriteLine(companyId);
             return GetCompanyById(companyId);
         }
 
@@ -35,18 +36,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "SELECT * " +
                 "FROM Company";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<Company> companies = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return companies;
         }
@@ -60,19 +53,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "FROM Company " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-            Company company = ToModel(sqlReader).First();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            Company company = ToModel(sqlReader).FirstOrDefault();
 
             return company;
         }
@@ -86,17 +71,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "Name = @Name, Number = @Number, Street = @Street, City = @City, Postal_Code = @PostalCode, Country = @Country " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, company);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -107,18 +85,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "DELETE FROM Company " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 

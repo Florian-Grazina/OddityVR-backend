@@ -90,3 +90,11 @@ C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-Od
 C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.dll
 C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\refint\Backend-OddityVR.dll
 C:\Users\Flori\OneDrive\Bureau\Repo\Backend-OddityVR\obj\Debug\net6.0\Backend-OddityVR.pdb
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

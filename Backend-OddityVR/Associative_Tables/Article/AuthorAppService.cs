@@ -7,9 +7,9 @@
 
 
         // constructor
-        public AuthorAppService()
+        public AuthorAppService(AuthorRepo authorRepo)
         {
-            _authorRepo = new();
+            _authorRepo = authorRepo;
         }
 
 

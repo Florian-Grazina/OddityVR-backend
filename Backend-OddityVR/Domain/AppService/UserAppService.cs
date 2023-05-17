@@ -1,5 +1,6 @@
-﻿using Backend_OddityVR.Domain.DTO;
+﻿using Backend_OddityVR.Domain.DTO.UserDTO;
 using Backend_OddityVR.Domain.Repo;
+using Backend_OddityVR.Service;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -10,17 +11,27 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // constructor
-        public UserAppService()
+        public UserAppService(UserRepo userRepo)
         {
-            _userRepo = new();
+            _userRepo = userRepo;
         }
 
 
         // create
-        public void CreateNewUser(CreateUserCmd newUser)
+        public User CreateNewUser(CreateUserCmd newUser)
         {
-            User user = newUser.ToModel();
-            _userRepo.CreateNewUser(user);
+            try
+            {
+                CmdFieldsChecker.Check(newUser);
+                User user = (User) newUser.ToModel();
+                _userRepo.CreateNewUser(user);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return new User();
         }
 
 
@@ -28,6 +39,12 @@ namespace Backend_OddityVR.Domain.AppService
         public List<User> GetAllUsers()
         {
             return _userRepo.GetAllUser();
+        }
+
+
+        public List<User> GetAllUsersFromDepartmentId(int id)
+        {
+            return _userRepo.GetAllUsersFromDepartmentId(id);
         }
 
 
@@ -39,10 +56,20 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // update
-        public void UpdateUser(CreateUserCmd updateUser, int id)
+        public User UpdateUser(UpdateUserCmd updateUser)
         {
-            User user = updateUser.ToModel(id);
-            _userRepo.UpdateUser(user);
+            try
+            {
+                CmdFieldsChecker.Check(updateUser);
+                User user = (User) updateUser.ToModel();
+                _userRepo.UpdateUser(user);
+                return user;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return new User();
         }
 
 
@@ -50,6 +77,13 @@ namespace Backend_OddityVR.Domain.AppService
         public void DeleteUser(int id)
         {
             _userRepo.DeleteUser(id);
+        }
+
+
+        // Login
+        public User? Login(LoginUserDTO loginUser)
+        {
+            return _userRepo.Login((User) loginUser.ToModel());
         }
     }
 }

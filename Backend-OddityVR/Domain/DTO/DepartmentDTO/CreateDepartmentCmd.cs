@@ -1,6 +1,8 @@
-﻿namespace Backend_OddityVR.Domain.DTO.DepartmentsDTO
+﻿using Backend_OddityVR.Model;
+
+namespace Backend_OddityVR.Domain.DTO.DepartmentsDTO
 {
-    public class CreateDepartmentCmd
+    public class CreateDepartmentCmd : ICmdAndDTO
     {
         // properties
         public string Name { get; set; }
@@ -12,11 +14,10 @@
 
 
         // methods
-        public Department ToModel(int id = 0)
+        public IModel ToModel()
         {
             return new Department
             {
-                Id = id,
                 Name = Name,
                 CompanyId = CompanyId
             };

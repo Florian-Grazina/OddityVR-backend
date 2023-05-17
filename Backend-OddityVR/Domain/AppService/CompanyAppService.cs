@@ -1,7 +1,6 @@
 ﻿using Backend_OddityVR.Domain.DTO.CompanyDTO;
-using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Backend_OddityVR.Domain.Repo;
-using System.Reflection;
+using Backend_OddityVR.Service;
 
 namespace Backend_OddityVR.Domain.AppService
 {
@@ -25,18 +24,12 @@ namespace Backend_OddityVR.Domain.AppService
         // create
         public CompaniesDetailsDTO CreateNewCompany(CreateCompanyCmd newCompany)
         {
-            PropertyInfo[] properties = newCompany.GetType().GetProperties(); ;
-
-            foreach (PropertyInfo property in properties)
+            if (CmdFieldsChecker.Check(newCompany))
             {
-                if (property.GetValue(newCompany).ToString() == "")
-                {
-                    throw new Exception("The element " + property.ToString() + " of the form is missing");
-                }
+                Company companytoReturn = _companyRepo.CreateNewCompany((Company)newCompany.ToModel());
+                return new CompaniesDetailsDTO(companytoReturn, 0);
             }
-
-            Company companytoReturn = _companyRepo.CreateNewCompany(newCompany.ToModel());
-            return new CompaniesDetailsDTO(companytoReturn, 0);
+            else throw new Exception("Cmd is not complete");
         }
 
 
@@ -63,27 +56,43 @@ namespace Backend_OddityVR.Domain.AppService
             Company company = _companyRepo.GetCompanyById(id);
             List<Department> departments = _departmentRepo.GetDepartmentByCompanyId(id);
 
-            CompaniesDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
-
-            return companyToReturn;
+            if (company != null)
+            {
+                CompaniesDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
+                return companyToReturn;
+            }
+            throw new Exception("Company not found");
         }
 
 
         // update
-        public CompaniesDetailsDTO UpdateCompany(Company company)
+        public CompaniesDetailsDTO UpdateCompany(UpdateCompanyCmd companyCmd)
         {
-            _companyRepo.UpdateCompany(company);
-            int numberOfDepartments = _departmentRepo.GetDepartmentByCompanyId(company.Id).Count;
-            CompaniesDetailsDTO companyToReturn = new(company, numberOfDepartments);
+            if (CmdFieldsChecker.Check(companyCmd))
+            {
+                if (_companyRepo.GetCompanyById(companyCmd.Id) != null)
+                {
+                    Company updatedCompany = (Company) companyCmd.ToModel();
+                    int numberOfDepartments = _departmentRepo.GetDepartmentByCompanyId(companyCmd.Id).Count;
 
-            return companyToReturn;
+                    _companyRepo.UpdateCompany(updatedCompany);
+                    return new CompaniesDetailsDTO (updatedCompany, numberOfDepartments);
+                }
+                else throw new Exception("Company doesn't exist");
+            }
+            else throw new Exception("Cmd is not complete");
         }
 
 
         // delete
         public void DeleteCompany(int id)
         {
-            _companyRepo.DeleteCompany(id);
+            if (_companyRepo.GetCompanyById(id) != null)
+            {
+                _companyRepo.DeleteCompany(id);
+            }
+            else
+                throw new Exception("Company doesn't exist");
         }
     }
 }

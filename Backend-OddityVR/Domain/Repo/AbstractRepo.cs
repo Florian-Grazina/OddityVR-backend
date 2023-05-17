@@ -9,9 +9,10 @@ namespace Backend_OddityVR.Domain.Repo
 
 
         // constructor
-        public AbstractRepo()
+        public AbstractRepo(Database database)
         {
-            _database = Database.GetInstance();
+            //_database = Database.GetInstance();
+            _database = database;
         }
     }
 }

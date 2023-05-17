@@ -1,28 +1,42 @@
-﻿using System.Data.SqlClient;
+﻿using Backend_OddityVR.Domain.DTO.UserDTO;
+using Backend_OddityVR.Service;
+using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
 {
     public class UserRepo : AbstractRepo
     {
+        // constructor
+        public UserRepo(Database database) : base(database)
+        {
+        }
+
+        //// properties
+        //protected readonly Database _database;
+
+
+        //// constructor
+        //public UserRepo(Database database)
+        //{
+        //    //_database = Database.GetInstance();
+        //    _database = database;
+        //}
+
         // create
-        public void CreateNewUser(User user)
+        public User CreateNewUser(User user)
         {
             string query =
                 "INSERT INTO End_User " +
                 "(Email, Password, Birthdate, Id_Role, Id_Department) " +
+                "OUTPUT INSERTED.Id " + 
                 "VALUES (@Email, @Password, @Birthdate, @RoleId, @DepartmentId)";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, user);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            int userId = (int)command.ExecuteNonQuery();
 
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            return GetUserById(userId);
         }
 
 
@@ -33,18 +47,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "SELECT * " +
                 "FROM End_User";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<User> listUsers = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return listUsers;
         }
@@ -60,45 +66,29 @@ namespace Backend_OddityVR.Domain.Repo
                 "ON Department.Id = End_User.Id_Department " +
                 "WHERE Department.Id_Company = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<User> listUsers = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return listUsers;
         }
 
 
         // get all from company
-        public List<User> GetAllUserFromDepartmentId(int id)
+        public List<User> GetAllUsersFromDepartmentId(int id)
         {
             string query =
                 "SELECT * " +
                 "FROM End_User " +
                 "WHERE Id_Department = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<User> listUsers = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return listUsers;
         }
@@ -112,19 +102,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "FROM End_User " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             User user = ToModel(sqlReader).First();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return user;
         }
@@ -138,17 +120,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "Email = @Email, Password = @Password, Birthdate = @Birthdate, Id_Role = @RoleId, Id_Department = @DepartmentId " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             AddParameters(command, user);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -159,18 +134,28 @@ namespace Backend_OddityVR.Domain.Repo
                 "DELETE FROM End_User " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            command.ExecuteNonQuery();
+        }
 
-            SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+        // Login
+        public User? Login(User loginUser)
+        {
+            string query =
+                "SELECT * FROM End_User " +
+                "WHERE Password = @Password AND Email = @Email";
 
-            sqlReader.Close();
-            command.Connection.Close();
+            using SqlCommand command = new(query, _database.GetDbConnection());
+            command.Parameters.AddWithValue("@Password", loginUser.Password);
+            command.Parameters.AddWithValue("@Email", loginUser.Email);
+
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            User? user = ToModel(sqlReader).FirstOrDefault();
+
+            return user;
         }
 
 
