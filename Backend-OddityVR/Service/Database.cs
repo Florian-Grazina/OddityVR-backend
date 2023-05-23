@@ -10,8 +10,6 @@ namespace Backend_OddityVR.Service
 
         // properties
 
-        private static readonly Database _instance;
-
         private static SqlConnection DbConnection;
 
         private static IConfiguration _configuration;
@@ -26,13 +24,8 @@ namespace Backend_OddityVR.Service
             Console.WriteLine("Connection opened");
         }
 
-
+        
         // methods
-        //public static Database Get_instance()
-        //{
-        //    return _instance;
-        //}
-
         public SqlConnection GetDbConnection()
         {
             return DbConnection;

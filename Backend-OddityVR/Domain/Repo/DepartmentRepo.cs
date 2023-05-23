@@ -21,7 +21,7 @@ namespace Backend_OddityVR.Domain.Repo
                 "VALUES (@Name, @CompanyId)";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, department);
+            RepoHelper.AddParameters(command, department);
 
             int departmentId = (int)command.ExecuteScalar();
 
@@ -91,7 +91,7 @@ namespace Backend_OddityVR.Domain.Repo
                 "WHERE Id = @Id";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, Department);
+            RepoHelper.AddParameters(command, Department);
 
             command.ExecuteNonQuery();
         }
@@ -124,16 +124,6 @@ namespace Backend_OddityVR.Domain.Repo
                 });
             }
             return listDepartments;
-        }
-
-        public SqlCommand AddParameters(SqlCommand command, Department department)
-        {
-            command.Parameters.AddWithValue("@Name", department.Name);
-            command.Parameters.AddWithValue("@CompanyId", department.CompanyId);
-            if (department.Id != null)
-                command.Parameters.AddWithValue("@Id", department.Id);
-
-            return command;
         }
     }
 }

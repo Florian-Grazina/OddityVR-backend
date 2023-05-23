@@ -2,7 +2,6 @@
 using Backend_OddityVR.Domain.DTO.DepartmentsDTO;
 using Backend_OddityVR.Domain.Repo;
 using Backend_OddityVR.Service;
-using System.Reflection;
 
 namespace Backend_OddityVR.Domain.AppService
 {

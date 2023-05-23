@@ -1,6 +1,6 @@
 ﻿namespace Backend_OddityVR.Domain.DTO.CompanyDTO
 {
-    public class CompaniesDetailsDTO
+    public class CompanyDetailsDTO
     {
         // properties
         public int Id { get; set; }
@@ -14,9 +14,9 @@
 
 
         // constructor
-        public CompaniesDetailsDTO() { }
+        public CompanyDetailsDTO() { }
 
-        public CompaniesDetailsDTO(Company company, int numberOfDepartments)
+        public CompanyDetailsDTO(Company company, int numberOfDepartments)
         {
             Id = company.Id;
             Name = company.Name;

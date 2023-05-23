@@ -1,4 +1,5 @@
 ﻿using Backend_OddityVR.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend_OddityVR.Domain.DTO.CompanyDTO
 {

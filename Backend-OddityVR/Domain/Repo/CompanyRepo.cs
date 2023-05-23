@@ -12,7 +12,7 @@ namespace Backend_OddityVR.Domain.Repo
 
 
         // create
-        public Company CreateNewCompany(Company company)
+        public Company? CreateNewCompany(Company company)
         {
             string query =
                 "INSERT INTO Company " +
@@ -21,10 +21,10 @@ namespace Backend_OddityVR.Domain.Repo
                 "VALUES (@Name, @Number, @Street, @City, @PostalCode, @Country)";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, company);
+            RepoHelper.AddParameters(command, company);
+
             int companyId = (int)command.ExecuteScalar();
 
-            Console.WriteLine(companyId);
             return GetCompanyById(companyId);
         }
 
@@ -46,7 +46,7 @@ namespace Backend_OddityVR.Domain.Repo
 
 
         // get id
-        public Company GetCompanyById(int id)
+        public Company? GetCompanyById(int id)
         {
             string query =
                 "SELECT * " +
@@ -57,7 +57,7 @@ namespace Backend_OddityVR.Domain.Repo
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
-            Company company = ToModel(sqlReader).FirstOrDefault();
+            Company? company = ToModel(sqlReader).FirstOrDefault();
 
             return company;
         }
@@ -72,7 +72,7 @@ namespace Backend_OddityVR.Domain.Repo
                 "WHERE Id = @Id";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, company);
+            RepoHelper.AddParameters(command, company);
 
             command.ExecuteNonQuery();
         }
@@ -110,21 +110,6 @@ namespace Backend_OddityVR.Domain.Repo
                 });
             }
             return listCompanies;
-        }
-
-
-        public SqlCommand AddParameters(SqlCommand command, Company company)
-        {
-            command.Parameters.AddWithValue("@Name", company.Name);
-            command.Parameters.AddWithValue("@Number", company.Number);
-            command.Parameters.AddWithValue("@Street", company.Street);
-            command.Parameters.AddWithValue("@City", company.City);
-            command.Parameters.AddWithValue("@PostalCode", company.PostalCode);
-            command.Parameters.AddWithValue("@Country", company.Country);
-            if (company.Id != null)
-                command.Parameters.AddWithValue("@Id", company.Id);
-
-            return command;
         }
     }
 }

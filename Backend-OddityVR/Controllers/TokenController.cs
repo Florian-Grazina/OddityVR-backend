@@ -39,9 +39,9 @@ namespace Backend_OddityVR.Controllers
                 {
                     //create claims details based on the user information
                     var claims = new[] {
-                        //new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
-                        //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        //new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim("UserId", user.Id.ToString()),
                         new Claim("Email", user.Email),
                         new Claim("Role", user.RoleId.ToString())
@@ -53,7 +53,7 @@ namespace Backend_OddityVR.Controllers
                         _configuration["Jwt:Issuer"],
                         _configuration["Jwt:Audience"],
                         claims,
-                        //expires: DateTime.UtcNow.AddMinutes(30),
+                        expires: DateTime.UtcNow.AddMinutes(30),
                         signingCredentials: signIn
                         );
 

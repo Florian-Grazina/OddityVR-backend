@@ -22,43 +22,43 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // create
-        public CompaniesDetailsDTO CreateNewCompany(CreateCompanyCmd newCompany)
+        public CompanyDetailsDTO CreateNewCompany(CreateCompanyCmd newCompany)
         {
             if (CmdFieldsChecker.Check(newCompany))
             {
                 Company companytoReturn = _companyRepo.CreateNewCompany((Company)newCompany.ToModel());
-                return new CompaniesDetailsDTO(companytoReturn, 0);
+                return new CompanyDetailsDTO(companytoReturn, 0);
             }
             else throw new Exception("Cmd is not complete");
         }
 
 
         // get all
-        public List<CompaniesDetailsDTO> GetAllCompanies()
+        public List<CompanyDetailsDTO> GetAllCompanies()
         {
             List<Company> companies = _companyRepo.GetAllCompanies();
             List<Department> departments = _departmentRepo.GetAllDepartments();
-            List<CompaniesDetailsDTO> toReturn = new ();
+            List<CompanyDetailsDTO> toReturn = new ();
 
             foreach (Company company in companies)
             {
                 int numberOfDepartments = departments.Where(dep => dep.CompanyId == company.Id).ToList().Count;
 
-                toReturn.Add(new CompaniesDetailsDTO(company, numberOfDepartments));
+                toReturn.Add(new CompanyDetailsDTO(company, numberOfDepartments));
             }
             return toReturn;
         }
 
 
         // get id
-        public CompaniesDetailsDTO GetCompanyById(int id)
+        public CompanyDetailsDTO GetCompanyById(int id)
         {
             Company company = _companyRepo.GetCompanyById(id);
             List<Department> departments = _departmentRepo.GetDepartmentByCompanyId(id);
 
             if (company != null)
             {
-                CompaniesDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
+                CompanyDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
                 return companyToReturn;
             }
             throw new Exception("Company not found");
@@ -66,7 +66,7 @@ namespace Backend_OddityVR.Domain.AppService
 
 
         // update
-        public CompaniesDetailsDTO UpdateCompany(UpdateCompanyCmd companyCmd)
+        public CompanyDetailsDTO UpdateCompany(UpdateCompanyCmd companyCmd)
         {
             if (CmdFieldsChecker.Check(companyCmd))
             {
@@ -76,7 +76,7 @@ namespace Backend_OddityVR.Domain.AppService
                     int numberOfDepartments = _departmentRepo.GetDepartmentByCompanyId(companyCmd.Id).Count;
 
                     _companyRepo.UpdateCompany(updatedCompany);
-                    return new CompaniesDetailsDTO (updatedCompany, numberOfDepartments);
+                    return new CompanyDetailsDTO (updatedCompany, numberOfDepartments);
                 }
                 else throw new Exception("Company doesn't exist");
             }

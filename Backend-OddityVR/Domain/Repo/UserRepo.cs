@@ -1,5 +1,4 @@
-﻿using Backend_OddityVR.Domain.DTO.UserDTO;
-using Backend_OddityVR.Service;
+﻿using Backend_OddityVR.Service;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Repo
@@ -11,16 +10,6 @@ namespace Backend_OddityVR.Domain.Repo
         {
         }
 
-        //// properties
-        //protected readonly Database _database;
-
-
-        //// constructor
-        //public UserRepo(Database database)
-        //{
-        //    //_database = Database.GetInstance();
-        //    _database = database;
-        //}
 
         // create
         public User CreateNewUser(User user)
@@ -32,7 +21,7 @@ namespace Backend_OddityVR.Domain.Repo
                 "VALUES (@Email, @Password, @Birthdate, @RoleId, @DepartmentId)";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, user);
+            RepoHelper.AddParameters(command, user);
 
             int userId = (int)command.ExecuteNonQuery();
 
@@ -121,7 +110,7 @@ namespace Backend_OddityVR.Domain.Repo
                 "WHERE Id = @Id";
 
             using SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, user);
+            RepoHelper.AddParameters(command, user);
 
             command.ExecuteNonQuery();
         }
@@ -177,22 +166,6 @@ namespace Backend_OddityVR.Domain.Repo
                 });
             }
             return listUsers;
-        }
-
-
-        public SqlCommand AddParameters(SqlCommand command, User user)
-        {
-            command.Parameters.AddWithValue("@Email", user.Email);
-            command.Parameters.AddWithValue("@Password", user.Password);
-            command.Parameters.AddWithValue("@Birthdate", user.Birthdate);
-            command.Parameters.AddWithValue("@RoleId", user.RoleId);
-            command.Parameters.AddWithValue("@DepartmentId", user.DepartmentId);
-
-            // only needed for updating
-            if (user.Id != null)
-                command.Parameters.AddWithValue("@Id", user.Id);
-
-            return command;
         }
     }
 }

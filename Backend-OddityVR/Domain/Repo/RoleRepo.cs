@@ -12,22 +12,18 @@ namespace Backend_OddityVR.Domain.Repo
 
 
         // create
-        public void CreateNewRole(Role role)
+        public Role CreateNewRole(Role role)
         {
             string query =
                 "INSERT INTO Role (Name) " +
                 "VALUES (@Name)";
-            SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, role);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, _database.GetDbConnection());
+            RepoHelper.AddParameters(command, role);
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            int roleId = (int)command.ExecuteNonQuery();
 
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            return GetRoleById(roleId);
         }
 
 
@@ -37,18 +33,11 @@ namespace Backend_OddityVR.Domain.Repo
             string query =
                 "SELECT * " +
                 "FROM Role";
-            SqlCommand command = new(query, _database.GetDbConnection());
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, _database.GetDbConnection());
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<Role> roles = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return roles;
         }
@@ -61,19 +50,12 @@ namespace Backend_OddityVR.Domain.Repo
                 "SELECT * " +
                 "FROM Role " +
                 "WHERE ID = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             Role role = ToModel(sqlReader).First();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return role;
         }
@@ -86,17 +68,11 @@ namespace Backend_OddityVR.Domain.Repo
                 "UPDATE Role " +
                 "SET Name = @Name " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, role);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, _database.GetDbConnection());
+            RepoHelper.AddParameters(command, role);
 
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -106,18 +82,11 @@ namespace Backend_OddityVR.Domain.Repo
             string query =
                 "DELETE FROM Role " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -134,15 +103,6 @@ namespace Backend_OddityVR.Domain.Repo
                 });
             }
             return listRoles;
-        }
-
-        public SqlCommand AddParameters(SqlCommand command, Role role)
-        {
-            command.Parameters.AddWithValue("@Name", role.Name);
-            if (role.Id != null)
-                command.Parameters.AddWithValue("@Id", role.Id);
-
-            return command;
         }
     }
 }
