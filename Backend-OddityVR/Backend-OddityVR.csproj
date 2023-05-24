@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App_Code\**" />
+    <Content Remove="App_Code\**" />
+    <EmbeddedResource Remove="App_Code\**" />
+    <None Remove="App_Code\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.15" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -17,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App_Code\" />
+    <Folder Include="Domain\Enum\" />
+    <Folder Include="Domain\Exception\" />
   </ItemGroup>
 
 </Project>

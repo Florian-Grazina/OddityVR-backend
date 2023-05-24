@@ -1,10 +1,13 @@
-using Backend_OddityVR.Associative_Tables.Article;
-using Backend_OddityVR.Associative_Tables.Softskill;
-using Backend_OddityVR.Domain.AppService;
-using Backend_OddityVR.Domain.Repo;
-using Backend_OddityVR.Service;
-using BackOddityVR.Domain.Repo;
+using Backend_OddityVR.Application.AppService;
+using Backend_OddityVR.Application.AppService.Interfaces;
+using Backend_OddityVR.Domain.Associative_Tables.Article;
+using Backend_OddityVR.Domain.Associative_Tables.Softskill;
+using Backend_OddityVR.Domain.Service;
+using Backend_OddityVR.Infrastructure.Repo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -44,15 +47,6 @@ namespace Backend_OddityVR
 
             builder.Services.AddSingleton<Database>();
 
-
-            //IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-            //configurationBuilder.AddJsonFile("appsettings.json");
-            //IConfiguration configuration = configurationBuilder.Build();
-
-            //Program.token = configuration["token"];
-            //Program.guidID = configuration["guidID"];
-            //Program.kind = configuration["kind"];
-
             builder.Services.AddSingleton<ArticleRepo>();
             builder.Services.AddSingleton<BatchRepo>();
             builder.Services.AddSingleton<CompanyRepo>();
@@ -65,6 +59,13 @@ namespace Backend_OddityVR
             builder.Services.AddSingleton<AuthorRepo>();
             builder.Services.AddSingleton<ReferenceRepo>();
 
+            builder.Services.AddAuthorization(options =>
+            {
+                var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme);
+                defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+                options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+            });
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;
@@ -73,12 +74,13 @@ namespace Backend_OddityVR
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
                     ValidAudience = builder.Configuration["Jwt:Audience"],
                     ValidIssuer = builder.Configuration["Jwt:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                 };
             });
-
 
             var app = builder.Build();
 
@@ -90,8 +92,8 @@ namespace Backend_OddityVR
             }
 
             app.UseHttpsRedirection();
-            app.UseAuthorization();
             app.MapControllers();
+            app.UseAuthorization();
             app.UseAuthentication();
 
 
