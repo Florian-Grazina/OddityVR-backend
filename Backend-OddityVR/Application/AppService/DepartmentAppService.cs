@@ -24,17 +24,13 @@ namespace Backend_OddityVR.Application.AppService
         // create
         public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartment)
         {
-            try
-            {
-                CmdFieldsChecker.Check(newDepartment);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
 
-            Department departmentToReturn = _departmentRepo.CreateNewDepartment((Department)newDepartment.ToModel());
-            return new DepartmentDetailsDTO(departmentToReturn, 0);
+            if (CmdFieldsChecker.Check(newDepartment))
+            {
+                Department departmentToReturn = _departmentRepo.CreateNewDepartment((Department)newDepartment.ToModel());
+                return new DepartmentDetailsDTO(departmentToReturn, 0);
+            }
+            else throw new Exception("Cmd is not complete");
         }
 
 
@@ -68,47 +64,48 @@ namespace Backend_OddityVR.Application.AppService
             Department department = _departmentRepo.GetDepartmentById(id);
             int numberOfEmployees = _userRepo.GetAllUsersFromDepartmentId(id).Count;
 
-            return new DepartmentDetailsDTO(department, numberOfEmployees);
+            if(department != null)
+            {
+                return new DepartmentDetailsDTO(department, numberOfEmployees);
+            }
+            throw new Exception("Department not found");
         }
 
 
         // update
         public DepartmentDetailsDTO UpdateDepartment(UpdateDepartmentCmd departmentCmd)
         {
-            try
+            if (CmdFieldsChecker.Check(departmentCmd))
             {
-                CmdFieldsChecker.Check(departmentCmd);
+                if (_departmentRepo.GetDepartmentById(departmentCmd.Id) != null)
+                {
+                    Department updatedDepartment = (Department)departmentCmd.ToModel();
+                    int numberOfEmployees = _userRepo.GetAllUsersFromDepartmentId(updatedDepartment.Id).Count;
 
-                Department updatedDepartment = (Department)departmentCmd.ToModel();
-                int numberOfEmployees = _userRepo.GetAllUsersFromDepartmentId(updatedDepartment.Id).Count;
-
-                _departmentRepo.UpdateDepartment(updatedDepartment);
-                return new DepartmentDetailsDTO(updatedDepartment, numberOfEmployees);
+                    _departmentRepo.UpdateDepartment(updatedDepartment);
+                    return new DepartmentDetailsDTO(updatedDepartment, numberOfEmployees);
+                }
+                else throw new Exception("Department doesn't exist");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return new DepartmentDetailsDTO();
+            else throw new Exception("Cmd is not complete");
         }
 
 
         // delete
         public void DeleteDepartment(int id)
         {
-            List<User> listUsers = _userRepo.GetAllUser();
-            List<User> usersInDepartment = listUsers.Where(user => user.DepartmentId == id).ToList();
+            if (_departmentRepo.GetDepartmentById(id) != null)
+            {
+                List<User> listUsers = _userRepo.GetAllUser();
+                List<User> usersInDepartment = listUsers.Where(user => user.DepartmentId == id).ToList();
 
-            if (usersInDepartment.Count > 0)
-            {
-                Console.WriteLine("Some users are linked to the department : ");
-                usersInDepartment.ForEach(user => Console.WriteLine(user.Id + " " + user.Email));
+                if (usersInDepartment.Count <= 0)
+                {
+                    _departmentRepo.DeleteDepartment(id);
+                }
+                else throw new Exception("Users are assigned to the department");
             }
-            else
-            {
-                _departmentRepo.DeleteDepartment(id);
-            }
+            else throw new Exception("Department doesn't exist");
         }
     }
 }

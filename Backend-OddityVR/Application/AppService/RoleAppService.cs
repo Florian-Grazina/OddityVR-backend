@@ -1,5 +1,5 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
-using Backend_OddityVR.Application.DTO;
+using Backend_OddityVR.Application.DTO.RoleDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Infrastructure.Repo;
 
@@ -32,6 +32,11 @@ namespace Backend_OddityVR.Application.AppService
         public List<Role> GetAllRoles()
         {
             return _roleRepo.GetAllRoles();
+        }
+
+        public List<Role> GetClientRoles()
+        {
+            return GetAllRoles().Where(role => role.Id <= 4).ToList();
         }
 
 

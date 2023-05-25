@@ -1,12 +1,11 @@
 ﻿using Backend_OddityVR.Domain.Model;
 using System.ComponentModel.DataAnnotations;
 
-namespace Backend_OddityVR.Application.DTO
+namespace Backend_OddityVR.Application.DTO.RoleDTO
 {
     public class CreateRoleCmd
     {
         // properties
-        [Required(ErrorMessage = "Role name is mandatory")]
         public string Name { get; set; }
 
 

@@ -7,7 +7,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    public class UserController
+    public class UserController : Controller
     {
         // properties
         private readonly IUserAppService _userService;
@@ -23,49 +23,92 @@ namespace Backend_OddityVR.Presentation.Controllers
         // methods
         [Route("create")]
         [HttpPost]
-        public User CreateNewUser(CreateUserCmd newUserCmd)
+        public ActionResult<UserDetailsDTO> CreateNewUser(CreateUserCmd newUserCmd)
         {
-            return _userService.CreateNewUser(newUserCmd);
+            try
+            {
+                return Ok(_userService.CreateNewUser(newUserCmd));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get_all")]
         [HttpGet]
-        public List<User> GetAllUser()
+        public ActionResult<List<User>> GetAllUser()
         {
-            return _userService.GetAllUsers();
+            try
+            {
+                return Ok(_userService.GetAllUsers());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get_all_from_department/{id:int}")]
         [HttpGet]
-        public List<User> GetAllUsersFromDepartmentId(int id)
+        public ActionResult<List<User>> GetAllUsersFromDepartmentId(int id)
         {
-            return _userService.GetAllUsersFromDepartmentId(id);
+            try
+            {
+                return Ok(_userService.GetAllUsersFromDepartmentId(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get/{id:int}")]
         [HttpGet]
-        public User GetUserById(int id)
+        public ActionResult<User> GetUserById(int id)
         {
-            return _userService.GetUserById(id);
+            try
+            {
+                return Ok(_userService.GetUserById(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
-        [Route("update/{id:int}")]
+        [Route("update")]
         [HttpPut]
-        public User UpdateUser(UpdateUserCmd newUserCmd)
+        public ActionResult<UserDetailsDTO> UpdateUser(UpdateUserCmd newUserCmd)
         {
-            return _userService.UpdateUser(newUserCmd);
+            try
+            {
+                return Ok(_userService.UpdateUser(newUserCmd));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("delete/{id:int}")]
         [HttpDelete]
-        public void DeleteUser(int id)
+        public ActionResult DeleteUser(int id)
         {
-            _userService.DeleteUser(id);
+            try
+            {
+                _userService.DeleteUser(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

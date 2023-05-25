@@ -11,7 +11,6 @@ namespace Backend_OddityVR.Application.AppService
         // properties
         private readonly CompanyRepo _companyRepo;
         private readonly DepartmentRepo _departmentRepo;
-        private readonly UserRepo _userRepo;
 
 
         // constructor
@@ -19,7 +18,6 @@ namespace Backend_OddityVR.Application.AppService
         {
             _companyRepo = companyRepo;
             _departmentRepo = departmentRepo;
-            _userRepo = userRepo;
         }
 
 
@@ -40,15 +38,15 @@ namespace Backend_OddityVR.Application.AppService
         {
             List<Company> companies = _companyRepo.GetAllCompanies();
             List<Department> departments = _departmentRepo.GetAllDepartments();
-            List<CompanyDetailsDTO> toReturn = new();
+            List<CompanyDetailsDTO> companiesToReturn = new();
 
             foreach (Company company in companies)
             {
                 int numberOfDepartments = departments.Where(dep => dep.CompanyId == company.Id).ToList().Count;
 
-                toReturn.Add(new CompanyDetailsDTO(company, numberOfDepartments));
+                companiesToReturn.Add(new CompanyDetailsDTO(company, numberOfDepartments));
             }
-            return toReturn;
+            return companiesToReturn;
         }
 
 
@@ -60,8 +58,8 @@ namespace Backend_OddityVR.Application.AppService
 
             if (company != null)
             {
-                CompanyDetailsDTO companyToReturn = new(company, departments.Where(dep => dep.CompanyId == id).ToList().Count);
-                return companyToReturn;
+                int numberOfDepartments = departments.Where(dep => dep.CompanyId == id).ToList().Count;
+                return new CompanyDetailsDTO(company, numberOfDepartments);
             }
             throw new Exception("Company not found");
         }
@@ -91,10 +89,16 @@ namespace Backend_OddityVR.Application.AppService
         {
             if (_companyRepo.GetCompanyById(id) != null)
             {
-                _companyRepo.DeleteCompany(id);
+                List<Department> listDepartments = _departmentRepo.GetAllDepartments();
+                List<Department> departmentsInCompany = listDepartments.Where(dep => dep.CompanyId == id).ToList();
+
+                if (departmentsInCompany.Count <= 0)
+                {
+                    _companyRepo.DeleteCompany(id);
+                }
+                else throw new Exception("Departments are assigned to the company");
             }
-            else
-                throw new Exception("Company doesn't exist");
+            else throw new Exception("Department doesn't exist");
         }
     }
 }

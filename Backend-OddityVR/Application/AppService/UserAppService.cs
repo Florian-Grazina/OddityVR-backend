@@ -10,30 +10,26 @@ namespace Backend_OddityVR.Application.AppService
     {
         // properties
         private readonly UserRepo _userRepo;
+        public readonly RoleRepo _roleRepo;
 
 
         // constructor
-        public UserAppService(UserRepo userRepo)
+        public UserAppService(UserRepo userRepo, RoleRepo roleRepo)
         {
             _userRepo = userRepo;
+            _roleRepo = roleRepo;
         }
 
 
         // create
-        public User CreateNewUser(CreateUserCmd newUser)
+        public UserDetailsDTO CreateNewUser(CreateUserCmd newUser)
         {
-            try
+            if (CmdFieldsChecker.Check(newUser))
             {
-                CmdFieldsChecker.Check(newUser);
-                User user = (User)newUser.ToModel();
-                _userRepo.CreateNewUser(user);
-                return user;
+                User user = _userRepo.CreateNewUser((User)newUser.ToModel());
+                return GetUserById(user.Id);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return new User();
+            else throw new Exception("Cmd is not complete");
         }
 
 
@@ -44,41 +40,58 @@ namespace Backend_OddityVR.Application.AppService
         }
 
 
-        public List<User> GetAllUsersFromDepartmentId(int id)
+        public List<UserDetailsDTO> GetAllUsersFromDepartmentId(int id)
         {
-            return _userRepo.GetAllUsersFromDepartmentId(id);
+            List<User> users = _userRepo.GetAllUsersFromDepartmentId(id);
+            List<Role> roles = _roleRepo.GetAllRoles();
+            List<UserDetailsDTO> usersToReturn = new();
+
+            foreach (User user in users)
+            {
+                Role role = roles.Where(role => role.Id == user.RoleId).ToList().First();
+
+                usersToReturn.Add(new UserDetailsDTO(user, role.Name));
+            }
+            return usersToReturn;
         }
 
 
         // get id
-        public User GetUserById(int id)
+        public UserDetailsDTO GetUserById(int id)
         {
-            return _userRepo.GetUserById(id);
+            User user = _userRepo.GetUserById(id);
+            Role role = _roleRepo.GetRoleById(user.RoleId);
+
+            return new UserDetailsDTO(user, role.Name);
         }
 
 
         // update
-        public User UpdateUser(UpdateUserCmd updateUser)
+        public UserDetailsDTO UpdateUser(UpdateUserCmd updateUser)
         {
-            try
+            if(CmdFieldsChecker.Check(updateUser))
             {
-                CmdFieldsChecker.Check(updateUser);
-                User user = (User)updateUser.ToModel();
-                _userRepo.UpdateUser(user);
-                return user;
+                if(_userRepo.GetUserById(updateUser.Id) != null)
+                {
+                    User user = (User)updateUser.ToModel();
+                    _userRepo.UpdateUser(user);
+                    return GetUserById(user.Id);
+                }
+                else throw new Exception("User doesn't exist");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return new User();
+            else throw new Exception("Cmd is not complete");
         }
 
 
         // delete
         public void DeleteUser(int id)
         {
-            _userRepo.DeleteUser(id);
+            if (_userRepo.GetUserById(id) != null)
+            {
+                _userRepo.DeleteUser(id);
+            }
+            else
+                throw new Exception("User doesn't exist");
         }
 
 

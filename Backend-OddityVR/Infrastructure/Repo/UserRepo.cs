@@ -24,7 +24,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
             using SqlCommand command = new(query, _database.GetDbConnection());
             RepoHelper.AddParameters(command, user);
 
-            int userId = command.ExecuteNonQuery();
+            int userId = (int)command.ExecuteScalar();
 
             return GetUserById(userId);
         }

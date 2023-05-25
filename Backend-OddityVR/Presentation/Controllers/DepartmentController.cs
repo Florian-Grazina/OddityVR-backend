@@ -7,7 +7,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/department")]
     [ApiController]
-    public class DepartmentController
+    public class DepartmentController : Controller
     {
         // properties
         private readonly IDepartmentAppService _departmentService;
@@ -23,49 +23,92 @@ namespace Backend_OddityVR.Presentation.Controllers
         // methods
         [Route("create")]
         [HttpPost]
-        public DepartmentDetailsDTO CreateNewDepartment(CreateDepartmentCmd newDepartmentCmd)
+        public ActionResult<DepartmentDetailsDTO> CreateNewDepartment(CreateDepartmentCmd newDepartmentCmd)
         {
-            return _departmentService.CreateNewDepartment(newDepartmentCmd);
+            try
+            {
+                return Ok(_departmentService.CreateNewDepartment(newDepartmentCmd));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get_all")]
         [HttpGet]
-        public List<Department> GetAllDepartments()
+        public ActionResult<List<Department>> GetAllDepartments()
         {
-            return _departmentService.GetAllDepartments();
+            try
+            {
+                return Ok(_departmentService.GetAllDepartments());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get/{id:int}")]
         [HttpGet]
-        public DepartmentDetailsDTO GetDepartmentById(int id)
+        public ActionResult<DepartmentDetailsDTO> GetDepartmentById(int id)
         {
-            return _departmentService.GetDepartmentById(id);
+            try
+            {
+                return Ok(_departmentService.GetDepartmentById(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("get_all_from_company/{id:int}")]
         [HttpGet]
-        public List<DepartmentDetailsDTO> GetAllDepartmentsWithCompanyId(int id)
+        public ActionResult<List<DepartmentDetailsDTO>> GetAllDepartmentsWithCompanyId(int id)
         {
-            return _departmentService.GetAllDepartmentsWithCompanyId(id);
+            try
+            {
+                return Ok(_departmentService.GetAllDepartmentsWithCompanyId(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("update")]
         [HttpPut]
-        public DepartmentDetailsDTO UpdateDepartment(UpdateDepartmentCmd department)
+        public ActionResult<DepartmentDetailsDTO> UpdateDepartment(UpdateDepartmentCmd department)
         {
-            return _departmentService.UpdateDepartment(department);
+            try
+            {
+                return Ok(_departmentService.UpdateDepartment(department));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [Route("delete/{id:int}")]
         [HttpDelete]
-        public void DeleteDepartment(int id)
+        public ActionResult DeleteDepartment(int id)
         {
-            _departmentService.DeleteDepartment(id);
+            try
+            {
+                _departmentService.DeleteDepartment(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

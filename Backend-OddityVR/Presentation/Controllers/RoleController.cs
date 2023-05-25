@@ -1,5 +1,5 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
-using Backend_OddityVR.Application.DTO;
+using Backend_OddityVR.Application.DTO.RoleDTO;
 using Backend_OddityVR.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +7,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/role")]
     [ApiController]
-    public class RoleController
+    public class RoleController : Controller
     {
         // properties
         private readonly IRoleAppService _roleService;
@@ -34,6 +34,21 @@ namespace Backend_OddityVR.Presentation.Controllers
         public List<Role> GetAllRole()
         {
             return _roleService.GetAllRoles();
+        }
+
+
+        [Route("get_client_roles")]
+        [HttpGet]
+        public ActionResult<List<Role>> GetClientsRoles()
+        {
+            try
+            {
+                return Ok(_roleService.GetClientRoles());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

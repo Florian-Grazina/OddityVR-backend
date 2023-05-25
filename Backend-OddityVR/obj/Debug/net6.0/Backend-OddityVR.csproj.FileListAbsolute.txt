@@ -98,3 +98,10 @@ C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skill
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\angular.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\package-lock.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\package.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\src\assets\data\100k.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\tsconfig.app.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\tsconfig.json
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Debug\net6.0\Presentation\FrontPanel\tsconfig.spec.json

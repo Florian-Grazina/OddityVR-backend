@@ -39,7 +39,7 @@ namespace Backend_OddityVR.Presentation.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [Route("get_all")]
         [HttpGet]
         public ActionResult<List<CompanyDetailsDTO>> GetAllCompanies()
