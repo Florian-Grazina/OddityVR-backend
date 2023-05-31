@@ -3,6 +3,8 @@ using Backend_OddityVR.Application.DTO.UserDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Domain.Service;
 using Backend_OddityVR.Infrastructure.Repo;
+using BCrypt.Net;
+using Bcr = BCrypt.Net;
 
 namespace Backend_OddityVR.Application.AppService
 {
@@ -26,6 +28,9 @@ namespace Backend_OddityVR.Application.AppService
         {
             if (CmdFieldsChecker.Check(newUser))
             {
+                var passwordHash = Bcr.BCrypt.HashPassword(newUser.Password);
+                newUser.Password = passwordHash;
+
                 User user = _userRepo.CreateNewUser((User)newUser.ToModel());
                 return GetUserById(user.Id);
             }
@@ -98,7 +103,21 @@ namespace Backend_OddityVR.Application.AppService
         // Login
         public User? Login(LoginUserDTO loginUser)
         {
-            return _userRepo.Login((User)loginUser.ToModel());
+            User? userInDatabase = _userRepo.GetUserByEmail((User)loginUser.ToModel());
+
+            if(userInDatabase == null)
+            {
+                throw new Exception("User doesn't exist");
+            }
+
+            var isLogged = Bcr.BCrypt.Verify(loginUser.Password, userInDatabase.Password);
+
+            if (!isLogged)
+            {
+                throw new Exception("Wrong Credentials");
+            }
+
+            return userInDatabase;
         }
     }
 }

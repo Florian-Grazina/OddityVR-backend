@@ -102,6 +102,23 @@ namespace Backend_OddityVR.Infrastructure.Repo
         }
 
 
+        // Login
+        public User? GetUserByEmail(User loginUser)
+        {
+            string query =
+                "SELECT * FROM End_User " +
+                "WHERE Email = @Email";
+
+            using SqlCommand command = new(query, _database.GetDbConnection());
+            command.Parameters.AddWithValue("@Email", loginUser.Email);
+
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            User? user = ToModel(sqlReader).FirstOrDefault();
+
+            return user;
+        }
+
+
         // update
         public void UpdateUser(User user)
         {
@@ -128,24 +145,6 @@ namespace Backend_OddityVR.Infrastructure.Repo
             command.Parameters.AddWithValue("@Id", id);
 
             command.ExecuteNonQuery();
-        }
-
-
-        // Login
-        public User? Login(User loginUser)
-        {
-            string query =
-                "SELECT * FROM End_User " +
-                "WHERE Password = @Password AND Email = @Email";
-
-            using SqlCommand command = new(query, _database.GetDbConnection());
-            command.Parameters.AddWithValue("@Password", loginUser.Password);
-            command.Parameters.AddWithValue("@Email", loginUser.Email);
-
-            using SqlDataReader sqlReader = command.ExecuteReader();
-            User? user = ToModel(sqlReader).FirstOrDefault();
-
-            return user;
         }
 
 

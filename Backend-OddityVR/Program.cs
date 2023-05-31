@@ -6,8 +6,6 @@ using Backend_OddityVR.Domain.Service;
 using Backend_OddityVR.Infrastructure.Repo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -97,7 +95,6 @@ namespace Backend_OddityVR
             app.UseAuthentication();
 
 
-            //app.UseCors(options => options.WithOrigins("http://127.0.0.1:5500").AllowAnyMethod());
             app.UseCors(builder => builder
              .AllowAnyOrigin()
              .AllowAnyMethod()

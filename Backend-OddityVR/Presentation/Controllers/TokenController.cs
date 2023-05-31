@@ -1,4 +1,5 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
+using Backend_OddityVR.Application.DTO;
 using Backend_OddityVR.Application.DTO.UserDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Domain.Service;
@@ -15,7 +16,7 @@ namespace Backend_OddityVR.Presentation.Controllers
     public class TokenController : Controller
     {
         // properties
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         private readonly IUserAppService _userService;
 
@@ -30,42 +31,45 @@ namespace Backend_OddityVR.Presentation.Controllers
 
         // methods
         [HttpPost]
-        public async Task<IActionResult> Post(LoginUserDTO userLogin)
+        public ActionResult Post(LoginUserDTO userLogin)
         {
             if (CmdFieldsChecker.Check(userLogin))
             {
-                User? user = _userService.Login(userLogin);
+                User user;
 
-                if (user != null)
+                try
                 {
-                    //create claims details based on the user information
-                    var claims = new[] {
-                        //new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
-                        //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        //new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", user.Id.ToString()),
-                        new Claim("Email", user.Email),
-                        new Claim(ClaimTypes.Role, user.RoleId.ToString())
-                    };
-
-                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-                    var token = new JwtSecurityToken(
-                        _configuration["Jwt:Issuer"],
-                        _configuration["Jwt:Audience"],
-                        claims,
-                        expires: DateTime.UtcNow.AddMinutes(30),
-                        signingCredentials: signIn
-                        );
-
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                    user = _userService.Login(userLogin);
                 }
-                else
+                catch (Exception ex)
                 {
-                    return BadRequest("Invalid credentials");
+                    return BadRequest(ex.Message);
                 }
-            }
+
+                //create claims details based on the user information
+                var claims = new[] {
+                    //new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                    //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    //new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                    new Claim("UserId", user.Id.ToString()),
+                    new Claim("Email", user.Email),
+                    new Claim(ClaimTypes.Role, user.RoleId.ToString())
+                };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(
+                    _configuration["Jwt:Issuer"],
+                    _configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.UtcNow.AddMinutes(30),
+                    signingCredentials: signIn
+                    );
+
+                var jsonToken = new JwtSecurityTokenHandler().WriteToken(token);
+                return Ok(new JwtDTO() {Key = jsonToken.ToString()});
+                 }
             else
             {
                 return BadRequest("Form is imcomplete");

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZIAYLAD46WDQoC3vMHJZ8fVKw8nxnsUQ/YlflUQkBL7YBAwSnG+zEYCiI+2tpeLIn/l82Q6clpJqYX0TXxsF1g==",
+  "dgSpecHash": "UAXAUlxgQQ5sKFUgYBIN48NPZMAYISQO9RZYUc4csdsdyastgGurzOrE3ySBqFCo6iXokYPTsBivVszgXjnL6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+  "projectFilePath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Dashboard\\Backend-OddityVR\\Backend-OddityVR.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Flori\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Flori\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",
     "C:\\Users\\Flori\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\Flori\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",
