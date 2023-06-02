@@ -4,10 +4,6 @@ namespace Backend_OddityVR.Domain.Service
 {
     public class Database
     {
-        // TO DO
-        // implement thread safe
-        // DAO Factory
-
         // properties
 
         private static SqlConnection DbConnection;
