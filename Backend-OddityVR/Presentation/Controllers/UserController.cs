@@ -1,11 +1,13 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO.UserDTO;
 using Backend_OddityVR.Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/user")]
+    //[Authorize]
     [ApiController]
     public class UserController : Controller
     {

@@ -124,7 +124,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
         {
             string query =
                 "UPDATE End_User SET " +
-                "Email = @Email, Password = @Password, Birthdate = @Birthdate, Id_Role = @RoleId, Id_Department = @DepartmentId " +
+                "Email = @Email, Birthdate = @Birthdate, Id_Role = @RoleId, Id_Department = @DepartmentId " +
                 "WHERE Id = @Id";
 
             using SqlCommand command = new(query, _database.GetDbConnection());

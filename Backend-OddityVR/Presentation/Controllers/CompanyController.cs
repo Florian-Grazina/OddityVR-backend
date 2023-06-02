@@ -9,6 +9,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/company")]
     [EnableCors]
+    //[Authorize]
     [ApiController]
     public class CompanyController : Controller
     {

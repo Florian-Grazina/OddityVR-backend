@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b+H+0V3IvEsPYfB4iSIrFOGRDPkIKQTcyHoXH6SX5iS+gJj3q4OFzmXv7YDy5H3tftF9HT9o14H0T6F/5/jT9w==",
+  "dgSpecHash": "j+5FlJXIqEYy3fZxFVDMUkXatIyMf+F6S1UmweLFvtyFmrjDa7chxt3clzzk25POWo9cEY+RqMOHbPuYHOX0/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Dashboard\\Backend-OddityVR\\Backend-OddityVR.csproj",
+  "projectFilePath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\soft_skills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Flori\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Flori\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

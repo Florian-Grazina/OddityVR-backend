@@ -7,7 +7,6 @@ namespace Backend_OddityVR.Application.DTO.UserDTO
         // properties
         public int Id { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         public DateTime Birthdate { get; set; }
         public int RoleId { get; set; }
         public int DepartmentId { get; set; }
@@ -24,7 +23,6 @@ namespace Backend_OddityVR.Application.DTO.UserDTO
             {
                 Id = Id,
                 Email = Email,
-                Password = Password,
                 Birthdate = Birthdate,
                 RoleId = RoleId,
                 DepartmentId = DepartmentId
