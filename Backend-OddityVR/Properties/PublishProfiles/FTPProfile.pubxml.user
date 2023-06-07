@@ -7,36 +7,36 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAL4Op6yQZJ0aKGr1ophMC6QAAAAACAAAAAAAQZgAAAAEAACAAAADGQItbXrI/aJuNT0mud2/xSMxvYMeibeQF80G0QUKFDAAAAAAOgAAAAAIAACAAAAAYU9WrVAmqDHbpTyAOfmHvTy0N422R23LOMOZy3fxBECAAAACjAn4/iZoAkvpliTlPjisgycEWV4wAx4IWhIfPBvJPm0AAAADsm8dpjTJCo0l8HLQ5jHb4JZZ6FDwwk84ZTX7xBrzWg+XHhTFSyj32x7L8dOnSIJDWQx3P2Tm1OGlkbtaXP93K</EncryptedPassword>
     <_PublishTargetUrl>ftp://141.94.244.4:21/dashboard-api</_PublishTargetUrl>
-    <History>True|2023-06-02T17:44:18.4407110Z;False|2023-06-02T19:42:51.1213497+02:00;False|2023-06-02T19:42:09.9750571+02:00;False|2023-06-02T19:41:19.5260166+02:00;True|2023-06-02T19:29:16.9227503+02:00;False|2023-06-02T19:28:41.3590483+02:00;True|2023-06-02T19:17:49.7596496+02:00;False|2023-06-02T19:16:45.4114195+02:00;False|2023-06-02T19:16:15.1503907+02:00;True|2023-06-02T15:17:14.7870973+02:00;False|2023-06-02T15:15:12.6188567+02:00;False|2023-06-02T15:14:08.8039078+02:00;True|2023-06-02T15:06:57.9069151+02:00;True|2023-06-02T14:27:24.4282782+02:00;True|2023-06-02T14:20:00.4922399+02:00;False|2023-06-02T14:17:04.3502341+02:00;True|2023-05-31T14:44:16.6240578+02:00;True|2023-05-31T14:20:22.6673563+02:00;True|2023-05-31T14:12:38.3980438+02:00;True|2023-05-31T14:05:46.4512120+02:00;True|2023-05-31T14:04:21.6613020+02:00;True|2023-05-31T14:03:26.0662521+02:00;True|2023-05-31T13:59:35.3007617+02:00;True|2023-05-31T13:58:36.0259847+02:00;True|2023-05-31T13:48:31.8195029+02:00;True|2023-05-30T15:28:24.5939124+02:00;True|2023-05-30T15:22:04.3093350+02:00;False|2023-05-30T15:20:45.0432809+02:00;</History>
+    <History>True|2023-06-07T11:57:40.6415752Z;False|2023-06-07T13:57:14.1926285+02:00;True|2023-06-07T11:50:40.3669302+02:00;True|2023-06-07T11:41:04.3671335+02:00;False|2023-06-07T11:40:37.0549402+02:00;False|2023-06-07T11:40:18.7915795+02:00;False|2023-06-07T11:40:01.4964225+02:00;True|2023-06-07T11:38:44.3234339+02:00;False|2023-06-07T11:38:06.7421597+02:00;False|2023-06-07T11:37:43.5500386+02:00;True|2023-06-07T11:20:58.1101131+02:00;True|2023-06-07T11:19:36.6286420+02:00;False|2023-06-07T11:17:50.2896821+02:00;False|2023-06-07T11:17:11.8903959+02:00;True|2023-06-06T15:32:19.5502161+02:00;True|2023-06-06T09:35:51.2340095+02:00;True|2023-06-02T19:44:18.4407110+02:00;False|2023-06-02T19:42:51.1213497+02:00;False|2023-06-02T19:42:09.9750571+02:00;False|2023-06-02T19:41:19.5260166+02:00;True|2023-06-02T19:29:16.9227503+02:00;False|2023-06-02T19:28:41.3590483+02:00;True|2023-06-02T19:17:49.7596496+02:00;False|2023-06-02T19:16:45.4114195+02:00;False|2023-06-02T19:16:15.1503907+02:00;True|2023-06-02T15:17:14.7870973+02:00;False|2023-06-02T15:15:12.6188567+02:00;False|2023-06-02T15:14:08.8039078+02:00;True|2023-06-02T15:06:57.9069151+02:00;True|2023-06-02T14:27:24.4282782+02:00;True|2023-06-02T14:20:00.4922399+02:00;False|2023-06-02T14:17:04.3502341+02:00;True|2023-05-31T14:44:16.6240578+02:00;True|2023-05-31T14:20:22.6673563+02:00;True|2023-05-31T14:12:38.3980438+02:00;True|2023-05-31T14:05:46.4512120+02:00;True|2023-05-31T14:04:21.6613020+02:00;True|2023-05-31T14:03:26.0662521+02:00;True|2023-05-31T13:59:35.3007617+02:00;True|2023-05-31T13:58:36.0259847+02:00;True|2023-05-31T13:48:31.8195029+02:00;True|2023-05-30T15:28:24.5939124+02:00;True|2023-05-30T15:22:04.3093350+02:00;False|2023-05-30T15:20:45.0432809+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>06/02/2023 15:52:25</publishTime>
+      <publishTime>06/07/2023 11:34:53</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>02/06/2023 15:13:41</publishTime>
+      <publishTime>06/07/2023 11:34:48</publishTime>
     </File>
     <File Include="Backend-OddityVR.deps.json">
-      <publishTime>06/02/2023 19:43:48</publishTime>
+      <publishTime>06/07/2023 13:57:32</publishTime>
     </File>
     <File Include="Backend-OddityVR.dll">
-      <publishTime>06/02/2023 19:43:48</publishTime>
+      <publishTime>06/07/2023 11:50:32</publishTime>
     </File>
     <File Include="Backend-OddityVR.exe">
-      <publishTime>06/02/2023 19:43:48</publishTime>
+      <publishTime>06/07/2023 13:57:32</publishTime>
     </File>
     <File Include="Backend-OddityVR.pdb">
-      <publishTime>06/02/2023 19:43:48</publishTime>
+      <publishTime>06/07/2023 13:57:32</publishTime>
     </File>
     <File Include="Backend-OddityVR.runtimeconfig.json">
-      <publishTime>02/06/2023 19:28:27</publishTime>
+      <publishTime>06/06/2023 09:35:43</publishTime>
     </File>
     <File Include="BCrypt.Net-Next.dll">
       <publishTime>03/03/2022 17:10:20</publishTime>
     </File>
     <File Include="Humanizer.dll">
-      <publishTime>01/29/2022 16:04:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.AspNetCore.Authentication.JwtBearer.dll">
       <publishTime>03/25/2023 03:42:26</publishTime>
@@ -45,19 +45,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/25/2023 03:39:46</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
-      <publishTime>10/19/2022 04:07:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Design.dll">
-      <publishTime>10/19/2022 04:08:38</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.dll">
-      <publishTime>10/19/2022 04:08:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
-      <publishTime>10/19/2022 04:08:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyModel.dll">
-      <publishTime>10/18/2022 18:15:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Abstractions.dll">
       <publishTime>10/05/2023 19:46:22</publishTime>
@@ -81,7 +81,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/29/2020 22:14:12</publishTime>
     </File>
     <File Include="Mono.TextTemplating.dll">
-      <publishTime>02/23/2021 04:04:28</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Newtonsoft.Json.Bson.dll">
       <publishTime>03/22/2017 12:01:20</publishTime>
@@ -90,43 +90,49 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/17/2021 21:03:36</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/angular.json">
-      <publishTime>05/16/2023 13:05:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/package-lock.json">
-      <publishTime>05/16/2023 13:15:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/package.json">
-      <publishTime>05/16/2023 13:19:25</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/src/assets/data/100k.json">
-      <publishTime>05/16/2023 13:05:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/tsconfig.app.json">
-      <publishTime>05/16/2023 13:05:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/tsconfig.json">
-      <publishTime>05/16/2023 13:05:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Presentation/FrontPanel/tsconfig.spec.json">
-      <publishTime>05/16/2023 13:05:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
-      <publishTime>10/18/2022 01:26:02</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/sni.dll">
-      <publishTime>12/07/2017 13:24:24</publishTime>
+      <publishTime>07/12/2017 13:24:24</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/sni.dll">
-      <publishTime>12/07/2017 13:24:22</publishTime>
+      <publishTime>07/12/2017 13:24:22</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/sni.dll">
-      <publishTime>12/07/2017 13:24:22</publishTime>
+      <publishTime>07/12/2017 13:24:22</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="SendGrid.dll">
+      <publishTime>10/08/2022 20:42:06</publishTime>
+    </File>
     <File Include="sni.dll">
       <publishTime>12/07/2017 13:24:22</publishTime>
+    </File>
+    <File Include="StarkbankEcdsa.dll">
+      <publishTime>09/11/2021 22:27:58</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
       <publishTime>01/11/2023 07:48:22</publishTime>
@@ -138,7 +144,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/01/2023 07:49:02</publishTime>
     </File>
     <File Include="System.CodeDom.dll">
-      <publishTime>07/19/2017 12:01:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Data.SqlClient.dll">
       <publishTime>10/18/2022 01:26:08</publishTime>
@@ -159,7 +165,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/28/2022 01:41:46</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>06/02/2023 19:43:48</publishTime>
+      <publishTime>06/07/2023 13:57:32</publishTime>
     </File>
   </ItemGroup>
 </Project>

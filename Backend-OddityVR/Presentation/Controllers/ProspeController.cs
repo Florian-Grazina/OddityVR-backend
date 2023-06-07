@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/prospe")]
-    [EnableCors]
+    [EnableCors("WebsiteForm")]
     [ApiController]
     public class ProspeController
     {
@@ -31,27 +31,27 @@ namespace Backend_OddityVR.Presentation.Controllers
         }
 
 
-        [Route("get_all")]
-        [HttpGet]
-        public List<Prospe> GetAllProspe()
-        {
-            return _prospeService.GetAllProspes();
-        }
+        //[Route("get_all")]
+        //[HttpGet]
+        //public List<Prospe> GetAllProspe()
+        //{
+        //    return _prospeService.GetAllProspes();
+        //}
 
 
-        [Route("get/{id:int}")]
-        [HttpGet]
-        public Prospe GetProspeById(int id)
-        {
-            return _prospeService.GetProspeById(id);
-        }
+        //[Route("get/{id:int}")]
+        //[HttpGet]
+        //public Prospe GetProspeById(int id)
+        //{
+        //    return _prospeService.GetProspeById(id);
+        //}
 
 
-        [Route("delete/{id:int}")]
-        [HttpDelete]
-        public void DeleteProspe(int id)
-        {
-            _prospeService.DeleteProspe(id);
-        }
+        //[Route("delete/{id:int}")]
+        //[HttpDelete]
+        //public void DeleteProspe(int id)
+        //{
+        //    _prospeService.DeleteProspe(id);
+        //}
     }
 }

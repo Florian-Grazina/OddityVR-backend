@@ -2,11 +2,13 @@
 using Backend_OddityVR.Application.DTO.DepartmentDTO;
 using Backend_OddityVR.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/department")]
+    [EnableCors("Dashboard")]
     //[Authorize]
     [ApiController]
     public class DepartmentController : Controller

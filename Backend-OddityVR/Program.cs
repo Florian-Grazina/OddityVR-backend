@@ -44,7 +44,6 @@ namespace Backend_OddityVR
             builder.Services.AddSingleton<IUserAppService, UserAppService>();
 
             builder.Services.AddSingleton<Database>();
-
             builder.Services.AddSingleton<ArticleRepo>();
             builder.Services.AddSingleton<BatchRepo>();
             builder.Services.AddSingleton<CompanyRepo>();
@@ -56,6 +55,26 @@ namespace Backend_OddityVR
             builder.Services.AddSingleton<UserRepo>();
             builder.Services.AddSingleton<AuthorRepo>();
             builder.Services.AddSingleton<ReferenceRepo>();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "Dashboard",
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://141.94.244.4:8095")
+                                      //policy.WithOrigins("http://localhost:4200")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                                  });
+                options.AddPolicy(name: "WebsiteForm",
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://141.94.244.4")
+                                      //policy.WithOrigins("http://127.0.0.1:5501")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                                  });
+            });
 
             builder.Services.AddAuthorization(options =>
             {
@@ -87,6 +106,11 @@ namespace Backend_OddityVR
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+
+                //app.UseCors(builder => builder
+                // .AllowAnyOrigin()
+                // .AllowAnyMethod()
+                // .AllowAnyHeader());
             }
 
             app.UseHttpsRedirection();
@@ -94,11 +118,7 @@ namespace Backend_OddityVR
             app.UseAuthorization();
             app.UseAuthentication();
 
-
-            app.UseCors(builder => builder
-             .AllowAnyOrigin()
-             .AllowAnyMethod()
-             .AllowAnyHeader());
+            app.UseCors();
 
             app.Run();
         }

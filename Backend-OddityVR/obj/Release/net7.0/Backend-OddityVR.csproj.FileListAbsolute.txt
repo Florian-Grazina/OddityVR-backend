@@ -122,3 +122,5 @@ C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skill
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\Backend-OddityVR.pdb
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\Backend-OddityVR.genruntimeconfig.cache
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\ref\Backend-OddityVR.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Release\net7.0\SendGrid.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\bin\Release\net7.0\StarkbankEcdsa.dll

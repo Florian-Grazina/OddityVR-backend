@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/company")]
-    [EnableCors]
+    [EnableCors("Dashboard")]
     //[Authorize]
     [ApiController]
     public class CompanyController : Controller

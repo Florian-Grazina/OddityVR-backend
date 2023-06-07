@@ -3,6 +3,7 @@ using Backend_OddityVR.Application.DTO;
 using Backend_OddityVR.Application.DTO.UserDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Domain.Service;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,6 +13,7 @@ using System.Text;
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/token")]
+    [EnableCors("Dashboard")]
     [ApiController]
     public class TokenController : Controller
     {

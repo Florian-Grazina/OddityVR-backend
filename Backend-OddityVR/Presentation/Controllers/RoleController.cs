@@ -1,11 +1,13 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO.RoleDTO;
 using Backend_OddityVR.Domain.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/role")]
+    [EnableCors("Dashboard")]
     [ApiController]
     public class RoleController : Controller
     {

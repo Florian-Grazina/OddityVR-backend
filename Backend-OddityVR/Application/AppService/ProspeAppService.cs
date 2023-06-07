@@ -1,6 +1,7 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO;
 using Backend_OddityVR.Domain.Model;
+using Backend_OddityVR.Domain.Service;
 using Backend_OddityVR.Infrastructure.Repo;
 
 namespace Backend_OddityVR.Application.AppService
@@ -21,8 +22,9 @@ namespace Backend_OddityVR.Application.AppService
         // create
         public void CreateNewProspe(CreateProspeCmd newProspe)
         {
-            Prospe prospe = newProspe.ToModel();
-            _prospeRepo.CreateNewProspe(prospe);
+            //Prospe prospe = newProspe.ToModel();
+            //_prospeRepo.CreateNewProspe(prospe);
+            EmailService.Execute(newProspe).Wait();
         }
 
 

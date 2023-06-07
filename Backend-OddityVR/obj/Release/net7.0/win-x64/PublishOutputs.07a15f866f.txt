@@ -20,6 +20,8 @@ C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skill
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Newtonsoft.Json.Bson.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\SendGrid.dll
+C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\StarkbankEcdsa.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Flori\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\CDA\zProjets\soft_skills\Dashboard\Backend\Backend-OddityVR\obj\Release\net7.0\win-x64\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
