@@ -9,7 +9,7 @@ namespace Backend_OddityVR.Presentation.Controllers
     [Route("api/prospe")]
     [EnableCors("WebsiteForm")]
     [ApiController]
-    public class ProspeController
+    public class ProspeController : Controller
     {
         // properties
         private readonly IProspeAppService _prospeService;
@@ -25,9 +25,17 @@ namespace Backend_OddityVR.Presentation.Controllers
         // methods
         [Route("create")]
         [HttpPost]
-        public void CreateNewProspe(CreateProspeCmd newProspeCmd)
+        public ActionResult CreateNewProspe(CreateProspeCmd newProspeCmd)
         {
-            _prospeService.CreateNewProspe(newProspeCmd);
+            try 
+            {
+                _prospeService.CreateNewProspe(newProspeCmd);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

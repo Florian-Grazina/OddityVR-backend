@@ -61,8 +61,8 @@ namespace Backend_OddityVR
                 options.AddPolicy(name: "Dashboard",
                                   policy =>
                                   {
-                                      policy.WithOrigins("http://141.94.244.4:8095")
-                                      //policy.WithOrigins("http://localhost:4200")
+                                      //policy.WithOrigins("http://141.94.244.4:8095")
+                                      policy.WithOrigins("http://localhost:4200")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod();
                                   });
@@ -72,7 +72,7 @@ namespace Backend_OddityVR
                                       policy.WithOrigins("http://141.94.244.4")
                                       //policy.WithOrigins("http://127.0.0.1:5501")
                                         .AllowAnyHeader()
-                                        .AllowAnyMethod();
+                                        .WithMethods("POST");
                                   });
             });
 
@@ -106,11 +106,6 @@ namespace Backend_OddityVR
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-
-                //app.UseCors(builder => builder
-                // .AllowAnyOrigin()
-                // .AllowAnyMethod()
-                // .AllowAnyHeader());
             }
 
             app.UseHttpsRedirection();

@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAL4Op6yQZJ0aKGr1ophMC6QAAAAACAAAAAAAQZgAAAAEAACAAAADGQItbXrI/aJuNT0mud2/xSMxvYMeibeQF80G0QUKFDAAAAAAOgAAAAAIAACAAAAAYU9WrVAmqDHbpTyAOfmHvTy0N422R23LOMOZy3fxBECAAAACjAn4/iZoAkvpliTlPjisgycEWV4wAx4IWhIfPBvJPm0AAAADsm8dpjTJCo0l8HLQ5jHb4JZZ6FDwwk84ZTX7xBrzWg+XHhTFSyj32x7L8dOnSIJDWQx3P2Tm1OGlkbtaXP93K</EncryptedPassword>
     <_PublishTargetUrl>ftp://141.94.244.4:21/dashboard-api</_PublishTargetUrl>
-    <History>True|2023-06-07T11:57:40.6415752Z;False|2023-06-07T13:57:14.1926285+02:00;True|2023-06-07T11:50:40.3669302+02:00;True|2023-06-07T11:41:04.3671335+02:00;False|2023-06-07T11:40:37.0549402+02:00;False|2023-06-07T11:40:18.7915795+02:00;False|2023-06-07T11:40:01.4964225+02:00;True|2023-06-07T11:38:44.3234339+02:00;False|2023-06-07T11:38:06.7421597+02:00;False|2023-06-07T11:37:43.5500386+02:00;True|2023-06-07T11:20:58.1101131+02:00;True|2023-06-07T11:19:36.6286420+02:00;False|2023-06-07T11:17:50.2896821+02:00;False|2023-06-07T11:17:11.8903959+02:00;True|2023-06-06T15:32:19.5502161+02:00;True|2023-06-06T09:35:51.2340095+02:00;True|2023-06-02T19:44:18.4407110+02:00;False|2023-06-02T19:42:51.1213497+02:00;False|2023-06-02T19:42:09.9750571+02:00;False|2023-06-02T19:41:19.5260166+02:00;True|2023-06-02T19:29:16.9227503+02:00;False|2023-06-02T19:28:41.3590483+02:00;True|2023-06-02T19:17:49.7596496+02:00;False|2023-06-02T19:16:45.4114195+02:00;False|2023-06-02T19:16:15.1503907+02:00;True|2023-06-02T15:17:14.7870973+02:00;False|2023-06-02T15:15:12.6188567+02:00;False|2023-06-02T15:14:08.8039078+02:00;True|2023-06-02T15:06:57.9069151+02:00;True|2023-06-02T14:27:24.4282782+02:00;True|2023-06-02T14:20:00.4922399+02:00;False|2023-06-02T14:17:04.3502341+02:00;True|2023-05-31T14:44:16.6240578+02:00;True|2023-05-31T14:20:22.6673563+02:00;True|2023-05-31T14:12:38.3980438+02:00;True|2023-05-31T14:05:46.4512120+02:00;True|2023-05-31T14:04:21.6613020+02:00;True|2023-05-31T14:03:26.0662521+02:00;True|2023-05-31T13:59:35.3007617+02:00;True|2023-05-31T13:58:36.0259847+02:00;True|2023-05-31T13:48:31.8195029+02:00;True|2023-05-30T15:28:24.5939124+02:00;True|2023-05-30T15:22:04.3093350+02:00;False|2023-05-30T15:20:45.0432809+02:00;</History>
+    <History>True|2023-06-07T12:51:39.2679448Z;False|2023-06-07T14:51:07.5914272+02:00;True|2023-06-07T14:25:30.2167611+02:00;True|2023-06-07T14:23:47.9778461+02:00;False|2023-06-07T14:23:22.1809098+02:00;True|2023-06-07T14:16:00.9005141+02:00;False|2023-06-07T14:15:17.0888811+02:00;True|2023-06-07T13:57:40.6415752+02:00;False|2023-06-07T13:57:14.1926285+02:00;True|2023-06-07T11:50:40.3669302+02:00;True|2023-06-07T11:41:04.3671335+02:00;False|2023-06-07T11:40:37.0549402+02:00;False|2023-06-07T11:40:18.7915795+02:00;False|2023-06-07T11:40:01.4964225+02:00;True|2023-06-07T11:38:44.3234339+02:00;False|2023-06-07T11:38:06.7421597+02:00;False|2023-06-07T11:37:43.5500386+02:00;True|2023-06-07T11:20:58.1101131+02:00;True|2023-06-07T11:19:36.6286420+02:00;False|2023-06-07T11:17:50.2896821+02:00;False|2023-06-07T11:17:11.8903959+02:00;True|2023-06-06T15:32:19.5502161+02:00;True|2023-06-06T09:35:51.2340095+02:00;True|2023-06-02T19:44:18.4407110+02:00;False|2023-06-02T19:42:51.1213497+02:00;False|2023-06-02T19:42:09.9750571+02:00;False|2023-06-02T19:41:19.5260166+02:00;True|2023-06-02T19:29:16.9227503+02:00;False|2023-06-02T19:28:41.3590483+02:00;True|2023-06-02T19:17:49.7596496+02:00;False|2023-06-02T19:16:45.4114195+02:00;False|2023-06-02T19:16:15.1503907+02:00;True|2023-06-02T15:17:14.7870973+02:00;False|2023-06-02T15:15:12.6188567+02:00;False|2023-06-02T15:14:08.8039078+02:00;True|2023-06-02T15:06:57.9069151+02:00;True|2023-06-02T14:27:24.4282782+02:00;True|2023-06-02T14:20:00.4922399+02:00;False|2023-06-02T14:17:04.3502341+02:00;True|2023-05-31T14:44:16.6240578+02:00;True|2023-05-31T14:20:22.6673563+02:00;True|2023-05-31T14:12:38.3980438+02:00;True|2023-05-31T14:05:46.4512120+02:00;True|2023-05-31T14:04:21.6613020+02:00;True|2023-05-31T14:03:26.0662521+02:00;True|2023-05-31T13:59:35.3007617+02:00;True|2023-05-31T13:58:36.0259847+02:00;True|2023-05-31T13:48:31.8195029+02:00;True|2023-05-30T15:28:24.5939124+02:00;True|2023-05-30T15:22:04.3093350+02:00;False|2023-05-30T15:20:45.0432809+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -18,16 +18,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/07/2023 11:34:48</publishTime>
     </File>
     <File Include="Backend-OddityVR.deps.json">
-      <publishTime>06/07/2023 13:57:32</publishTime>
+      <publishTime>06/07/2023 14:51:31</publishTime>
     </File>
     <File Include="Backend-OddityVR.dll">
-      <publishTime>06/07/2023 11:50:32</publishTime>
+      <publishTime>06/07/2023 14:51:31</publishTime>
     </File>
     <File Include="Backend-OddityVR.exe">
-      <publishTime>06/07/2023 13:57:32</publishTime>
+      <publishTime>06/07/2023 14:51:31</publishTime>
     </File>
     <File Include="Backend-OddityVR.pdb">
-      <publishTime>06/07/2023 13:57:32</publishTime>
+      <publishTime>06/07/2023 14:51:31</publishTime>
     </File>
     <File Include="Backend-OddityVR.runtimeconfig.json">
       <publishTime>06/06/2023 09:35:43</publishTime>
@@ -60,13 +60,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Abstractions.dll">
-      <publishTime>10/05/2023 19:46:22</publishTime>
+      <publishTime>05/10/2023 19:46:22</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
-      <publishTime>10/05/2023 19:19:08</publishTime>
+      <publishTime>05/10/2023 19:19:08</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Logging.dll">
-      <publishTime>10/05/2023 19:22:12</publishTime>
+      <publishTime>05/10/2023 19:22:12</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.dll">
       <publishTime>01/19/2022 23:30:48</publishTime>
@@ -75,7 +75,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/19/2022 23:38:34</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Tokens.dll">
-      <publishTime>10/05/2023 19:27:18</publishTime>
+      <publishTime>05/10/2023 19:27:18</publishTime>
     </File>
     <File Include="Microsoft.OpenApi.dll">
       <publishTime>08/29/2020 22:14:12</publishTime>
@@ -126,22 +126,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="SendGrid.dll">
-      <publishTime>10/08/2022 20:42:06</publishTime>
+      <publishTime>08/10/2022 20:42:06</publishTime>
     </File>
     <File Include="sni.dll">
-      <publishTime>12/07/2017 13:24:22</publishTime>
+      <publishTime>07/12/2017 13:24:22</publishTime>
     </File>
     <File Include="StarkbankEcdsa.dll">
-      <publishTime>09/11/2021 22:27:58</publishTime>
+      <publishTime>11/09/2021 22:27:58</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
-      <publishTime>01/11/2023 07:48:22</publishTime>
+      <publishTime>11/01/2023 07:48:22</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
-      <publishTime>01/11/2023 07:48:26</publishTime>
+      <publishTime>11/01/2023 07:48:26</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
-      <publishTime>11/01/2023 07:49:02</publishTime>
+      <publishTime>01/11/2023 07:49:02</publishTime>
     </File>
     <File Include="System.CodeDom.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -150,7 +150,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/18/2022 01:26:08</publishTime>
     </File>
     <File Include="System.IdentityModel.Tokens.Jwt.dll">
-      <publishTime>10/05/2023 19:17:56</publishTime>
+      <publishTime>05/10/2023 19:17:56</publishTime>
     </File>
     <File Include="System.Net.Http.Formatting.dll">
       <publishTime>05/28/2022 01:39:42</publishTime>
@@ -165,7 +165,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/28/2022 01:41:46</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>06/07/2023 13:57:32</publishTime>
+      <publishTime>06/07/2023 14:51:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

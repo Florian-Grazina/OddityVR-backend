@@ -14,8 +14,8 @@ namespace Backend_OddityVR.Domain.Service
 
             var from = new EmailAddress("OddityForm@outlook.fr", "OddityVR Form");
             var subject = form.Subject;
-            var to = new EmailAddress("floriangrazina@gmail.com", "Thomas");
-            //var to = new EmailAddress("thomas.cacan@oddity-vr.com", "Thomas");
+            //var to = new EmailAddress("floriangrazina@gmail.com", "Thomas");
+            var to = new EmailAddress("thomas.cacan@oddity-vr.com", "Thomas");
             var htmlContent = "<strong>" + form.Name + "<br>" + form.Email + "<br>" + form.Phone + "<br>" + "</strong> <br><br>" + form.Message;
             var plainTextContent = "";
 
