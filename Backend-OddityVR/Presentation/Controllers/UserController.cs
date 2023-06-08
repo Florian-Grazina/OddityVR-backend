@@ -38,6 +38,20 @@ namespace Backend_OddityVR.Presentation.Controllers
             }
         }
 
+        [Route("csv_script")]
+        [HttpGet]
+        public ActionResult<int> CsvScript()
+        {
+            try
+            {
+                return Ok(_userService.CreateUsersWithCSV());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [Route("get_all")]
         [HttpGet]

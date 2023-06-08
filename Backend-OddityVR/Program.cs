@@ -61,16 +61,14 @@ namespace Backend_OddityVR
                 options.AddPolicy(name: "Dashboard",
                                   policy =>
                                   {
-                                      //policy.WithOrigins("http://141.94.244.4:8095")
-                                      policy.WithOrigins("http://localhost:4200")
+                                      policy.WithOrigins(builder.Configuration["DashboardOrigin"])
                                         .AllowAnyHeader()
                                         .AllowAnyMethod();
                                   });
                 options.AddPolicy(name: "WebsiteForm",
                                   policy =>
                                   {
-                                      policy.WithOrigins("http://141.94.244.4")
-                                      //policy.WithOrigins("http://127.0.0.1:5501")
+                                      policy.WithOrigins(builder.Configuration["WebsiteOrigin"])
                                         .AllowAnyHeader()
                                         .WithMethods("POST");
                                   });

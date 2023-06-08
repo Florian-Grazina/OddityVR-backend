@@ -37,6 +37,33 @@ namespace Backend_OddityVR.Application.AppService
             else throw new Exception("Cmd is not complete");
         }
 
+        public int CreateUsersWithCSV()
+        {
+            List<string[]> data = ImportCSV.ImportData("users.csv");
+            int affectedRows = 0;
+            
+            foreach(var line in data)
+            {
+                try
+                {
+                    affectedRows++;
+                    CreateNewUser(new CreateUserCmd
+                    {
+                        Email = line[0],
+                        Password = line[1],
+                        Birthdate = DateTime.Parse(line[2]),
+                        RoleId = int.Parse(line[3]),
+                        DepartmentId = int.Parse(line[4]),
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Something went wrong with the insertion of " + line[0]);
+                }
+            }
+            return affectedRows;
+        }
+
 
         // get all
         public List<User> GetAllUsers()
