@@ -37,4 +37,8 @@
     <Folder Include="Domain\Exception\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
 </Project>

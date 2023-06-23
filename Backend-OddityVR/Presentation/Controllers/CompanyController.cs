@@ -1,6 +1,5 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO.CompanyDTO;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
