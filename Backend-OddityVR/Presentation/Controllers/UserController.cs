@@ -9,6 +9,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/user")]
     [EnableCors("Dashboard")]
+    [Authorize]
     [ApiController]
     public class UserController : Controller
     {

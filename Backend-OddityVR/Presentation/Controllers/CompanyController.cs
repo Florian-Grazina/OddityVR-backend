@@ -9,7 +9,7 @@ namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/company")]
     [EnableCors("Dashboard")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class CompanyController : Controller
     {
@@ -40,7 +40,6 @@ namespace Backend_OddityVR.Presentation.Controllers
         }
 
 
-        //[Authorize]
         [Route("get_all")]
         [HttpGet]
         public ActionResult<List<CompanyDetailsDTO>> GetAllCompanies()

@@ -1,5 +1,5 @@
 ﻿using Backend_OddityVR.Domain.Service;
-using Backend_OddityVR.Infrastructure.Repo;
+using Backend_OddityVR.Infrastructure.Repo.Interfaces;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Domain.Associative_Tables.Article

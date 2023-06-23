@@ -28,7 +28,7 @@ namespace Backend_OddityVR.Application.AppService
         {
             if (CmdFieldsChecker.Check(newUser))
             {
-                var passwordHash = Bcr.BCrypt.HashPassword(newUser.Password);
+                string passwordHash = Bcr.BCrypt.HashPassword(newUser.Password);
                 newUser.Password = passwordHash;
 
                 User user = _userRepo.CreateNewUser((User)newUser.ToModel());

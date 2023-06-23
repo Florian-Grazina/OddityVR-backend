@@ -1,5 +1,6 @@
 ﻿using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Domain.Service;
+using Backend_OddityVR.Infrastructure.Repo.Interfaces;
 using System.Data.SqlClient;
 
 namespace Backend_OddityVR.Infrastructure.Repo
