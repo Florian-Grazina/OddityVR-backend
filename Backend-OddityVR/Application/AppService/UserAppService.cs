@@ -132,7 +132,7 @@ namespace Backend_OddityVR.Application.AppService
         {
             User? userInDatabase = _userRepo.GetUserByEmail((User)loginUser.ToModel());
 
-            if(userInDatabase == null)
+            if (userInDatabase == null)
             {
                 throw new Exception("User doesn't exist");
             }

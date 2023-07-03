@@ -12,7 +12,7 @@ namespace Backend_OddityVR.Domain.Service
 
             foreach (PropertyInfo property in properties)
             {
-                if (property.GetValue(cmd).ToString() == "")
+                if (property.GetValue(cmd)?.ToString() == "")
                 {
                     errorMessage += "The element " + property.ToString() + " of the form is missing\n";
                 };
