@@ -21,15 +21,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "(Date_Message, Name, Email, Phone, Subject, Message) " +
                 "VALUES (@DateMessage, @Name, @Email, @Phone, @Subject, @Message)";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, prospe);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -42,15 +42,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Prospe";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Prospe> listProspe = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -67,16 +67,16 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM Prospe " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             Prospe prospe = ToModel(sqlReader).First();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -114,15 +114,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM Prospe " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();

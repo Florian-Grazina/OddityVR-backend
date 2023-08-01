@@ -21,7 +21,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "(Date_Published, Is_Published, Title, Body, Is_Public) " +
                 "VALUES (@DatePublished, @IsPublished, @Title, @Body, @IsPublic)";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, article);
 
             int articleId = (int)command.ExecuteScalar();
@@ -37,7 +37,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Article";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             using SqlDataReader sqlReader = command.ExecuteReader();
             List<Article> articles = ToModel(sqlReader);
@@ -53,7 +53,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Article " +
                 "WHERE Id = @Id";
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -71,7 +71,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "Date_Published = @Datepublished, Is_Published = @IsPublished, Title = @Title, Body = @Body, Is_Public = @IsPublic " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, article);
 
             command.ExecuteNonQuery();
@@ -85,7 +85,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM Article " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             command.ExecuteNonQuery();

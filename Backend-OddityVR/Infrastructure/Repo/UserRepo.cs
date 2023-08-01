@@ -22,7 +22,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "OUTPUT INSERTED.Id " +
                 "VALUES (@Email, @Password, @Birthdate, @RoleId, @DepartmentId)";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, user);
 
             int userId = (int)command.ExecuteScalar();
@@ -38,12 +38,29 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM End_User";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             using SqlDataReader sqlReader = command.ExecuteReader();
             List<User> listUsers = ToModel(sqlReader);
 
             return listUsers;
+        }
+
+
+        // get all with test
+        internal List<User> GetUsersWithTest()
+        {
+            string query =
+                "SELECT End_User.* FROM End_User " +
+                "RIGHT JOIN Test_Result ON Test_Result.Id_User = End_User.Id";
+
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
+
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            List<User> listUsers = ToModel(sqlReader);
+
+            // return the list of users with no duplicate
+            return listUsers.GroupBy(u => u.Id).Select(group => group.First()).ToList();
         }
 
 
@@ -57,7 +74,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "ON Department.Id = End_User.Id_Department " +
                 "WHERE Department.Id_Company = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -67,7 +84,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
         }
 
 
-        // get all from company
+        // get all from department
         public List<User> GetAllUsersFromDepartmentId(int id)
         {
             string query =
@@ -75,7 +92,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM End_User " +
                 "WHERE Id_Department = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -93,7 +110,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM End_User " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -110,7 +127,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * FROM End_User " +
                 "WHERE Email = @Email";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Email", loginUser.Email);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -128,7 +145,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "Email = @Email, Birthdate = @Birthdate, Id_Role = @RoleId, Id_Department = @DepartmentId " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, user);
 
             command.ExecuteNonQuery();
@@ -142,7 +159,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM End_User " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             command.ExecuteNonQuery();
@@ -168,5 +185,6 @@ namespace Backend_OddityVR.Infrastructure.Repo
             }
             return listUsers;
         }
+
     }
 }

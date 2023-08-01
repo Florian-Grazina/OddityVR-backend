@@ -20,7 +20,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "INSERT INTO Role (Name) " +
                 "VALUES (@Name)";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, role);
 
             int roleId = command.ExecuteNonQuery();
@@ -36,7 +36,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Role";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             using SqlDataReader sqlReader = command.ExecuteReader();
             List<Role> roles = ToModel(sqlReader);
@@ -53,7 +53,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM Role " +
                 "WHERE ID = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -71,7 +71,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SET Name = @Name " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, role);
 
             command.ExecuteNonQuery();
@@ -85,7 +85,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM Role " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             command.ExecuteNonQuery();

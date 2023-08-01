@@ -1,12 +1,10 @@
 ﻿using Backend_OddityVR.Domain.Model;
-using System.ComponentModel.DataAnnotations;
 
 namespace Backend_OddityVR.Application.DTO
 {
     public class CreateArticleCmd
     {
         // properties
-        [Required(ErrorMessage = "Article title is mandatory")]
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime DatePublished { get; set; }

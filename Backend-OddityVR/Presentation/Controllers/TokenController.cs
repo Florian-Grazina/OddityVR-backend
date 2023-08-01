@@ -25,6 +25,7 @@ namespace Backend_OddityVR.Presentation.Controllers
         {
             try
             {
+                Console.WriteLine("test");
                 return Ok(_tokenAppService.GetToken(userLogin));
             }
             catch (Exception ex)

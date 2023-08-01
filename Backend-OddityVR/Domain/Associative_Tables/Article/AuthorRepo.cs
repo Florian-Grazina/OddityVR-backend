@@ -17,15 +17,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
             string query =
                 "INSERT INTO Article_Author (Id_User, Id_Article) " +
                 "VALUES (@UserId, @ArticleId)";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, author);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -37,15 +37,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
             string query =
                 "SELECT * " +
                 "FROM Article_Author";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Author> authors = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -61,16 +61,16 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
                 "SELECT * " +
                 "FROM Article_Author " +
                 "WHERE Id_User = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Author> authors = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -85,16 +85,16 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
                 "SELECT * " +
                 "FROM Article_Author " +
                 "WHERE Id_Article = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Author> authors = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -110,18 +110,18 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
                 "UPDATE Article_Author " +
                 "SET Id_User = @UserId, Id_Article = @ArticleId " +
                 "WHERE Id_User = @UserToModify AND Id_Article = @ArticleToModify";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, author);
             command.Parameters.AddWithValue("@UserToModify", userId);
             command.Parameters.AddWithValue("@ArticleToModify", articleId);
 
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -133,15 +133,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
             string query =
                 "DELETE FROM Article_Author " +
                 "WHERE Id_User = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -153,15 +153,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Article
             string query =
                 "DELETE FROM Article_Author " +
                 "WHERE Id_Article = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();

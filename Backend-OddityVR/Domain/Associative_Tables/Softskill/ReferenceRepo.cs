@@ -17,15 +17,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
             string query =
                 "INSERT INTO Softskill_Reference (Id_Test, Id_Softskill, Value) " +
                 "VALUES (@TestId, @SoftskillId, @Value)";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, reference);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -37,15 +37,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
             string query =
                 "SELECT * " +
                 "FROM softskill_Reference";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Reference> references = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -61,16 +61,16 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
                 "SELECT * " +
                 "FROM Softskill_Reference " +
                 "WHERE Id_Test = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Reference> references = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -85,16 +85,16 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
                 "SELECT * " +
                 "FROM Softskill_Reference " +
                 "WHERE Id_Softskill = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Reference> reference = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -110,17 +110,17 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
                 "UPDATE Softskill_Reference " +
                 "SET Id_Test = @TestId, Id_Softskill = @SoftskillId, Value = @Value " +
                 "WHERE Id_Test = @TestToModify AND Id_Softskill = @SoftskillToModify";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, reference);
             command.Parameters.AddWithValue("@TestToModify", testId);
             command.Parameters.AddWithValue("@SoftskillToModify", softskillId);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -132,15 +132,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
             string query =
                 "DELETE FROM Softskill_Reference " +
                 "WHERE Id_Test = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -152,15 +152,15 @@ namespace Backend_OddityVR.Domain.Associative_Tables.Softskill
             string query =
                 "DELETE FROM Softskill_Reference " +
                 "WHERE Id_Softskill = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();

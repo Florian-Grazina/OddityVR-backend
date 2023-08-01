@@ -14,22 +14,16 @@ namespace Backend_OddityVR.Infrastructure.Repo
 
 
         // create
-        public void CreateNewTestResult(TestResult TestResult)
+        public void CreateNewTestResult(TestResult testResult)
         {
             string query =
                 "INSERT INTO Test_Result (Sharing, Summary, Id_Batch, Id_User) " +
                 "VALUES (@Sharing, @Summary, @BatchId, @UserId)";
-            SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, TestResult);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
+            RepoHelper.AddParameters(command, testResult);
 
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -39,18 +33,11 @@ namespace Backend_OddityVR.Infrastructure.Repo
             string query =
                 "SELECT * " +
                 "FROM Test_Result";
-            SqlCommand command = new(query, _database.GetDbConnection());
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
-            SqlDataReader sqlReader = command.ExecuteReader();
+            using SqlDataReader sqlReader = command.ExecuteReader();
             List<TestResult> testResults = ToModel(sqlReader);
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
 
             return testResults;
         }
@@ -63,21 +50,14 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Test_Result " +
                 "WHERE ID = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            TestResult testResult = ToModel(sqlReader).First();
 
-            SqlDataReader sqlReader = command.ExecuteReader();
-            TestResult TestResult = ToModel(sqlReader).First();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
-
-            return TestResult;
+            return testResult;
         }
 
 
@@ -88,17 +68,11 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "UPDATE Test_Result " +
                 "SET Id_User = @UserId, Sharing = @Sharing, Summary = @Summary, Id_Batch = @BatchId " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
-            AddParameters(command, testResult);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
+            RepoHelper.AddParameters(command, testResult);
 
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
 
@@ -108,18 +82,11 @@ namespace Backend_OddityVR.Infrastructure.Repo
             string query =
                 "DELETE FROM Test_Result " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
-            // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
-
-            SqlDataReader sqlReader = command.ExecuteReader();
-
-            _database.GetDbConnection().Close();
-
-            sqlReader.Close();
-            command.Connection.Close();
+            command.ExecuteNonQuery();
         }
 
         // methods
@@ -138,18 +105,6 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 });
             }
             return listTestResults;
-        }
-
-        public SqlCommand AddParameters(SqlCommand command, TestResult testResult)
-        {
-            command.Parameters.AddWithValue("@Sharing", testResult.Sharing);
-            command.Parameters.AddWithValue("@Summary", testResult.Summary);
-            command.Parameters.AddWithValue("@BatchId", testResult.BatchId);
-            command.Parameters.AddWithValue("@UserId", testResult.UserId);
-            if (testResult.Id != null)
-                command.Parameters.AddWithValue("@Id", testResult.Id);
-
-            return command;
         }
     }
 }

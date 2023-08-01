@@ -1,5 +1,6 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO;
+using Backend_OddityVR.Application.DTO.TestDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Infrastructure.Repo;
 
@@ -9,12 +10,14 @@ namespace Backend_OddityVR.Application.AppService
     {
         // properties
         private readonly TestResultRepo _testResultRepo;
+        private readonly UserRepo _userRepo;
 
 
         // constructor
-        public TestResultAppService(TestResultRepo testRepoResult)
+        public TestResultAppService(TestResultRepo testRepoResult, UserRepo userRepo)
         {
             _testResultRepo = testRepoResult;
+            _userRepo = userRepo;
         }
 
 
@@ -30,6 +33,12 @@ namespace Backend_OddityVR.Application.AppService
         public List<TestResult> GetAllTestResults()
         {
             return _testResultRepo.GetAllTestResults();
+        }
+
+        public List<User> GetAllTestUsers()
+        {
+            List<User> users = _userRepo.GetUsersWithTest();
+            return users.ToList();
         }
 
 

@@ -19,15 +19,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
             string query =
                 "INSERT INTO Batch (Creation_Date, Id_User) " +
                 "VALUES (@CreationDate, @UserId)";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, batch);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -39,15 +39,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
             string query =
                 "SELECT * " +
                 "FROM Batch";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Batch> batchs = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -63,16 +63,16 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Batch " +
                 "WHERE ID = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             Batch Batch = ToModel(sqlReader).First();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -88,15 +88,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "UPDATE Batch " +
                 "SET Creation_Date = @CreationDate, Id_user = @UserId " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, Batch);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -108,15 +108,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
             string query =
                 "DELETE FROM Batch " +
                 "WHERE Id = @Id";
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();

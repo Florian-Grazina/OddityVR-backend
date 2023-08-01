@@ -21,15 +21,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "(Name) " +
                 "VALUES (@Name)";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, newSoftskill);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -42,15 +42,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
             "SELECT * " +
             "FROM Softskill";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             List<Softskill> listSoftskills = ToModel(sqlReader);
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -67,16 +67,16 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM Softskill " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
             Softskill Softskill = ToModel(sqlReader).First();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();
@@ -93,15 +93,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "Name = @Name " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             AddParameters(command, Softskill);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
             sqlReader.Close();
             command.Connection.Close();
         }
@@ -114,15 +114,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM Softskill " +
                 "WHERE Id = @Id";
 
-            SqlCommand command = new(query, _database.GetDbConnection());
+            SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             // Starting connection with DB and executing
-            _database.GetDbConnection().Open();
+            GetDatabase().GetDbConnection().Open();
 
             SqlDataReader sqlReader = command.ExecuteReader();
 
-            _database.GetDbConnection().Close();
+            GetDatabase().GetDbConnection().Close();
 
             sqlReader.Close();
             command.Connection.Close();

@@ -36,6 +36,12 @@ namespace Backend_OddityVR.Presentation.Controllers
             return _testResultService.GetAllTestResults();
         }
 
+        [Route("get_all_user")]
+        [HttpGet]
+        public List<User> GetAllTestUser()
+        {
+            return _testResultService.GetAllTestUsers();
+        }
 
         [Route("get/{id:int}")]
         [HttpGet]

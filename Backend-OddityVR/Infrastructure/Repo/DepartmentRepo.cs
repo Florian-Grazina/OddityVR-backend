@@ -22,7 +22,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "OUTPUT INSERTED.Id " +
                 "VALUES (@Name, @CompanyId)";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             RepoHelper.AddParameters(command, department);
 
             int departmentId = (int)command.ExecuteScalar();
@@ -38,7 +38,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "SELECT * " +
                 "FROM Department";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
 
             using SqlDataReader sqlReader = command.ExecuteReader();
             List<Department> departments = ToModel(sqlReader);
@@ -55,7 +55,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "FROM Department " +
                 "WHERE ID = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -74,7 +74,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "ON Department.Id_Company = Company.Id " +
                 "WHERE Id_Company = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             using SqlDataReader sqlReader = command.ExecuteReader();
@@ -85,15 +85,15 @@ namespace Backend_OddityVR.Infrastructure.Repo
 
 
         // update
-        public void UpdateDepartment(Department Department)
+        public void UpdateDepartment(Department department)
         {
             string query =
                 "UPDATE Department " +
                 "SET Name = @Name, Id_Company = @CompanyId " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
-            RepoHelper.AddParameters(command, Department);
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
+            RepoHelper.AddParameters(command, department);
 
             command.ExecuteNonQuery();
         }
@@ -106,7 +106,7 @@ namespace Backend_OddityVR.Infrastructure.Repo
                 "DELETE FROM Department " +
                 "WHERE Id = @Id";
 
-            using SqlCommand command = new(query, _database.GetDbConnection());
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
             command.Parameters.AddWithValue("@Id", id);
 
             command.ExecuteNonQuery();

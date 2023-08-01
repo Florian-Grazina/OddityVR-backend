@@ -3,7 +3,6 @@ using Backend_OddityVR.Application.DTO.UserDTO;
 using Backend_OddityVR.Domain.Model;
 using Backend_OddityVR.Domain.Service;
 using Backend_OddityVR.Infrastructure.Repo;
-using BCrypt.Net;
 using Bcr = BCrypt.Net;
 
 namespace Backend_OddityVR.Application.AppService
@@ -13,13 +12,17 @@ namespace Backend_OddityVR.Application.AppService
         // properties
         private readonly UserRepo _userRepo;
         public readonly RoleRepo _roleRepo;
+        public readonly DepartmentRepo _departmentRepo;
+        public readonly CompanyRepo _companyRepo;
 
 
         // constructor
-        public UserAppService(UserRepo userRepo, RoleRepo roleRepo)
+        public UserAppService(UserRepo userRepo, RoleRepo roleRepo, DepartmentRepo departmentRepo, CompanyRepo companyRepo)
         {
             _userRepo = userRepo;
             _roleRepo = roleRepo;
+            _departmentRepo = departmentRepo;
+            _companyRepo = companyRepo;
         }
 
 
@@ -70,7 +73,6 @@ namespace Backend_OddityVR.Application.AppService
         {
             return _userRepo.GetAllUser();
         }
-
 
         public List<UserDetailsDTO> GetAllUsersFromDepartmentId(int id)
         {

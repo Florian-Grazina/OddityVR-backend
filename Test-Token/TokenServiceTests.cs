@@ -22,7 +22,8 @@ namespace Test_Token
             {
                 if (configuration == null)
                 {
-                    var builder = new ConfigurationBuilder().AddJsonFile("appsettings.Test.json", optional: false);
+                    var builder = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.Test.json", optional: false);
                     configuration = builder.Build();
                 }
 
@@ -44,7 +45,6 @@ namespace Test_Token
             var serviceProvider = services.BuildServiceProvider();
 
             _tokenAppService = serviceProvider.GetService<TokenAppService>();
-
         }
         
 
