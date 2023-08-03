@@ -1,7 +1,5 @@
 ﻿using Backend_OddityVR.Application.AppService;
 using Backend_OddityVR.Application.AppService.Interfaces;
-using Backend_OddityVR.Domain.Associative_Tables.Article;
-using Backend_OddityVR.Domain.Associative_Tables.Softskill;
 using Backend_OddityVR.Domain.Service;
 using Backend_OddityVR.Infrastructure.Repo;
 
@@ -32,8 +30,7 @@ namespace Backend_OddityVR.Domain.Helpers
             builder.Services.AddSingleton<SoftskillRepo>();
             builder.Services.AddSingleton<TestResultRepo>();
             builder.Services.AddSingleton<UserRepo>();
-            builder.Services.AddSingleton<AuthorRepo>();
-            builder.Services.AddSingleton<ReferenceRepo>();
+            builder.Services.AddSingleton<SoftSkillReferenceRepo>();
 
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Backend_OddityVR.Application.DTO.TestDTO
+﻿using Backend_OddityVR.Domain.Model;
+
+namespace Backend_OddityVR.Application.DTO.TestDTO
 {
     public class TestUserDTO
     {
@@ -8,10 +10,10 @@
         public string Role { get; set; }
         public string Company { get; set; }
         public string Department { get; set; }
-        public int NumberOfTests { get; set; }
 
 
         // constructor
         public TestUserDTO() { }
+
     }
 }

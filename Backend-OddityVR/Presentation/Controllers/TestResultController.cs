@@ -1,13 +1,17 @@
 ﻿using Backend_OddityVR.Application.AppService.Interfaces;
 using Backend_OddityVR.Application.DTO;
+using Backend_OddityVR.Application.DTO.TestDTO;
 using Backend_OddityVR.Domain.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Backend_OddityVR.Presentation.Controllers
 {
     [Route("api/test_result")]
+    [EnableCors("Dashboard")]
     [ApiController]
-    public class TestResultController
+    public class TestResultController : Controller
     {
         // properties
         private readonly ITestResultAppService _testResultService;
@@ -38,9 +42,30 @@ namespace Backend_OddityVR.Presentation.Controllers
 
         [Route("get_all_user")]
         [HttpGet]
-        public List<User> GetAllTestUser()
+        public ActionResult<List<TestUserDTO>> GetAllTestUser()
         {
-            return _testResultService.GetAllTestUsers();
+            try
+            {
+                return Ok(_testResultService.GetAllTestUsers());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("get_user/{id:int}")]
+        [HttpGet]
+        public ActionResult<List<TestUserDTO>> GetTestUser(int id)
+        {
+            try
+            {
+                return Ok(_testResultService.GetTestUserById(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [Route("get/{id:int}")]

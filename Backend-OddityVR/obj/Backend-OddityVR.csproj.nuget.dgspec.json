@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\SoftSkills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj": {}
+    "C:\\Users\\Flori\\Desktop\\Projects\\SoftSkills\\Dashboard\\OddityVR-webapp-backend\\Backend-OddityVR\\Backend-OddityVR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\SoftSkills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj": {
+    "C:\\Users\\Flori\\Desktop\\Projects\\SoftSkills\\Dashboard\\OddityVR-webapp-backend\\Backend-OddityVR\\Backend-OddityVR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\SoftSkills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+        "projectUniqueName": "C:\\Users\\Flori\\Desktop\\Projects\\SoftSkills\\Dashboard\\OddityVR-webapp-backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
         "projectName": "Backend-OddityVR",
-        "projectPath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\SoftSkills\\Dashboard\\Backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
+        "projectPath": "C:\\Users\\Flori\\Desktop\\Projects\\SoftSkills\\Dashboard\\OddityVR-webapp-backend\\Backend-OddityVR\\Backend-OddityVR.csproj",
         "packagesPath": "C:\\Users\\Flori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Flori\\OneDrive - INSTITUT FRANCAIS DES AFFAIRES\\CDA\\zProjets\\SoftSkills\\Dashboard\\Backend\\Backend-OddityVR\\obj\\",
+        "outputPath": "C:\\Users\\Flori\\Desktop\\Projects\\SoftSkills\\Dashboard\\OddityVR-webapp-backend\\Backend-OddityVR\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

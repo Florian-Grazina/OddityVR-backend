@@ -11,13 +11,19 @@ namespace Backend_OddityVR.Application.AppService
         // properties
         private readonly TestResultRepo _testResultRepo;
         private readonly UserRepo _userRepo;
+        private readonly DepartmentRepo _departmentRepo;
+        private readonly CompanyRepo _companyRepo;
+        private readonly RoleRepo _roleRepo;
 
 
         // constructor
-        public TestResultAppService(TestResultRepo testRepoResult, UserRepo userRepo)
+        public TestResultAppService(TestResultRepo testRepoResult, UserRepo userRepo, DepartmentRepo departmentRepo, CompanyRepo companyRepo, RoleRepo roleRepo)
         {
             _testResultRepo = testRepoResult;
             _userRepo = userRepo;
+            _departmentRepo = departmentRepo;
+            _companyRepo = companyRepo;
+            _roleRepo = roleRepo;
         }
 
 
@@ -35,17 +41,35 @@ namespace Backend_OddityVR.Application.AppService
             return _testResultRepo.GetAllTestResults();
         }
 
-        public List<User> GetAllTestUsers()
+        public List<TestUserDTO> GetAllTestUsers()
         {
             List<User> users = _userRepo.GetUsersWithTest();
-            return users.ToList();
-        }
 
+            List<TestUserDTO> testUsers = new();
+            users.ForEach(user => testUsers.Add(GetTestUserById(user.Id)));
+
+            return testUsers;
+        }
 
         // get id
         public TestResult GetTestResultById(int id)
         {
             return _testResultRepo.GetTestResultById(id);
+        }
+
+        public TestUserDTO GetTestUserById(int id)
+        {
+            User user = _userRepo.GetUserById(id);
+            Department department = _departmentRepo.GetDepartmentById(user.DepartmentId);
+
+            return new TestUserDTO()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Role = _roleRepo.GetRoleById(user.RoleId).Name,
+                Company = _companyRepo.GetCompanyById(department.CompanyId).Name,
+                Department = department.Name
+            };
         }
 
 
