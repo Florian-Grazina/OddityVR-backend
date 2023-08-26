@@ -51,6 +51,12 @@ namespace Backend_OddityVR.Application.AppService
             return testUsers;
         }
 
+        public List<SoftSkillReference> GetSoftskillReferenceByUser(int id)
+        {
+            return _testResultRepo.GetSoftskillReferenceByUser(id);
+        }
+
+
         // get id
         public TestResult GetTestResultById(int id)
         {

@@ -61,6 +61,23 @@ namespace Backend_OddityVR.Infrastructure.Repo
         }
 
 
+        public List<SoftSkillReference> GetSoftskillReferenceByUser(int id)
+        {
+            string query =
+                "SELECT Id_Test, softskill.Name, Value_result FROM Softskill_reference " +
+                "INNER JOIN softskill ON softskill.Id = Id_SoftSkill " +
+                "WHERE Id_Test = @Id";
+
+            using SqlCommand command = new(query, GetDatabase().GetDbConnection());
+            command.Parameters.AddWithValue("@Id", id);
+
+            using SqlDataReader sqlReader = command.ExecuteReader();
+            List<SoftSkillReference> softSkillReferences= ToModelReference(sqlReader);
+
+            return softSkillReferences;
+        }
+
+
         // update
         public void UpdateTestResult(TestResult testResult)
         {
@@ -102,6 +119,21 @@ namespace Backend_OddityVR.Infrastructure.Repo
                     Summary = reader["Summary"].ToString(),
                     BatchId = int.Parse(reader["Id_Batch"].ToString()),
                     UserId = int.Parse(reader["Id_User"].ToString()),
+                });
+            }
+            return listTestResults;
+        }
+
+        public List<SoftSkillReference> ToModelReference(SqlDataReader reader)
+        {
+            List<SoftSkillReference> listTestResults = new();
+            while (reader.Read())
+            {
+                listTestResults.Add(new SoftSkillReference()
+                {
+                    TestId = int.Parse(reader["Id_Test"].ToString()),
+                    SoftskillId = int.Parse(reader["Id_Test"].ToString()),
+                    Value = int.Parse(reader["Id_Test"].ToString())
                 });
             }
             return listTestResults;

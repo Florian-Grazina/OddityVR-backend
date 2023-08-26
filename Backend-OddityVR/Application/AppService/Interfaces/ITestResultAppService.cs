@@ -11,6 +11,7 @@ namespace Backend_OddityVR.Application.AppService.Interfaces
         public List<TestUserDTO> GetAllTestUsers();
         public TestUserDTO GetTestUserById(int id);
         public TestResult GetTestResultById(int id);
+        public List<SoftSkillReference> GetSoftskillReferenceByUser(int id);
         public void UpdateTestResult(CreateTestResultCmd updateTestResult, int id);
         public void DeleteTestResultAsync(int id);
     }

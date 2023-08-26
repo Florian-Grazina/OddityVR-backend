@@ -9,3 +9,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Test_Token
 build_property.ProjectDir = C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Test-Token\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

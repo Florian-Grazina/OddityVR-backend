@@ -9,28 +9,28 @@ namespace Backend_OddityVR.Domain.Helpers
     {
         public static void InitDependencyInjection(WebApplicationBuilder builder)
         {
-            builder.Services.AddSingleton<IArticleAppService, ArticleAppService>();
-            builder.Services.AddSingleton<IBatchAppService, BatchAppService>();
-            builder.Services.AddSingleton<ICompanyAppService, CompanyAppService>();
-            builder.Services.AddSingleton<IDepartmentAppService, DepartmentAppService>();
-            builder.Services.AddSingleton<IProspeAppService, ProspeAppService>();
-            builder.Services.AddSingleton<IRoleAppService, RoleAppService>();
-            builder.Services.AddSingleton<ISoftskillAppService, SoftskillAppService>();
-            builder.Services.AddSingleton<ITestResultAppService, TestResultAppService>();
-            builder.Services.AddSingleton<IUserAppService, UserAppService>();
-            builder.Services.AddSingleton<ITokenAppService, TokenAppService>();
+            builder.Services.AddScoped<IArticleAppService, ArticleAppService>();
+            builder.Services.AddScoped<IBatchAppService, BatchAppService>();
+            builder.Services.AddScoped<ICompanyAppService, CompanyAppService>();
+            builder.Services.AddScoped<IDepartmentAppService, DepartmentAppService>();
+            builder.Services.AddScoped<IProspeAppService, ProspeAppService>();
+            builder.Services.AddScoped<IRoleAppService, RoleAppService>();
+            builder.Services.AddScoped<ISoftskillAppService, SoftskillAppService>();
+            builder.Services.AddScoped<ITestResultAppService, TestResultAppService>();
+            builder.Services.AddScoped<IUserAppService, UserAppService>();
+            builder.Services.AddScoped<ITokenAppService, TokenAppService>();
 
-            builder.Services.AddSingleton<Database>();
-            builder.Services.AddSingleton<ArticleRepo>();
-            builder.Services.AddSingleton<BatchRepo>();
-            builder.Services.AddSingleton<CompanyRepo>();
-            builder.Services.AddSingleton<DepartmentRepo>();
-            builder.Services.AddSingleton<ProspeRepo>();
-            builder.Services.AddSingleton<RoleRepo>();
-            builder.Services.AddSingleton<SoftskillRepo>();
-            builder.Services.AddSingleton<TestResultRepo>();
-            builder.Services.AddSingleton<UserRepo>();
-            builder.Services.AddSingleton<SoftSkillReferenceRepo>();
+            builder.Services.AddScoped<Database>();
+            builder.Services.AddScoped<ArticleRepo>();
+            builder.Services.AddScoped<BatchRepo>();
+            builder.Services.AddScoped<CompanyRepo>();
+            builder.Services.AddScoped<DepartmentRepo>();
+            builder.Services.AddScoped<ProspeRepo>();
+            builder.Services.AddScoped<RoleRepo>();
+            builder.Services.AddScoped<SoftskillRepo>();
+            builder.Services.AddScoped<TestResultRepo>();
+            builder.Services.AddScoped<UserRepo>();
+            builder.Services.AddScoped<SoftSkillReferenceRepo>();
 
         }
     }

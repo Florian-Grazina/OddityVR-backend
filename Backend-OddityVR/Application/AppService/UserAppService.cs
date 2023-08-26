@@ -29,15 +29,17 @@ namespace Backend_OddityVR.Application.AppService
         // create
         public UserDetailsDTO CreateNewUser(CreateUserCmd newUser)
         {
-            if (CmdFieldsChecker.Check(newUser))
-            {
-                string passwordHash = Bcr.BCrypt.HashPassword(newUser.Password);
-                newUser.Password = passwordHash;
+            if (!CmdFieldsChecker.Check(newUser))
+                throw new Exception("Cmd is not complete");
 
-                User user = _userRepo.CreateNewUser((User)newUser.ToModel());
-                return GetUserById(user.Id);
-            }
-            else throw new Exception("Cmd is not complete");
+            if(_userRepo.GetUserByEmail((User) newUser.ToModel()) != null)
+                throw new Exception("User already exists");
+
+            string passwordHash = Bcr.BCrypt.HashPassword(newUser.Password);
+            newUser.Password = passwordHash;
+
+            User user = _userRepo.CreateNewUser((User)newUser.ToModel());
+            return GetUserById(user.Id);
         }
 
         public int CreateUsersWithCSV()
@@ -103,17 +105,15 @@ namespace Backend_OddityVR.Application.AppService
         // update
         public UserDetailsDTO UpdateUser(UpdateUserCmd updateUser)
         {
-            if(CmdFieldsChecker.Check(updateUser))
-            {
-                if(_userRepo.GetUserById(updateUser.Id) != null)
-                {
-                    User user = (User)updateUser.ToModel();
-                    _userRepo.UpdateUser(user);
-                    return GetUserById(user.Id);
-                }
-                else throw new Exception("User doesn't exist");
-            }
-            else throw new Exception("Cmd is not complete");
+            if(!CmdFieldsChecker.Check(updateUser))
+                throw new Exception("Cmd is not complete");
+
+            if(_userRepo.GetUserById(updateUser.Id) == null)
+                throw new Exception("User doesn't exist");
+
+            User user = (User)updateUser.ToModel();
+            _userRepo.UpdateUser(user);
+            return GetUserById(user.Id);
         }
 
 

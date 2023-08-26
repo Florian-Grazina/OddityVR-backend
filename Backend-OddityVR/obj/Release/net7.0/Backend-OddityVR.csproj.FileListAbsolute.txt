@@ -62,3 +62,4 @@ C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Bac
 C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Backend-OddityVR\obj\Release\net7.0\Backend-OddityVR.pdb
 C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Backend-OddityVR\obj\Release\net7.0\Backend-OddityVR.genruntimeconfig.cache
 C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Backend-OddityVR\obj\Release\net7.0\ref\Backend-OddityVR.dll
+C:\Users\Flori\Desktop\Projects\SoftSkills\Dashboard\OddityVR-webapp-backend\Backend-OddityVR\obj\Release\net7.0\Backend-OddityVR.sourcelink.json

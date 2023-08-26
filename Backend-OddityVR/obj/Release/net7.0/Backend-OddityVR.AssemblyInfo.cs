@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Backend-OddityVR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec2647047ee77a320ba05d104edd6ddcf5a7c2f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Backend-OddityVR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Backend-OddityVR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

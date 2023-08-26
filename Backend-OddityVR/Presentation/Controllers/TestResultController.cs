@@ -70,9 +70,30 @@ namespace Backend_OddityVR.Presentation.Controllers
 
         [Route("get/{id:int}")]
         [HttpGet]
-        public TestResult GetTestResultById(int id)
+        public ActionResult<TestResult> GetTestResultById(int id)
         {
-            return _testResultService.GetTestResultById(id);
+            try
+            {
+                return Ok(_testResultService.GetTestResultById(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("get_all_by_user/{id:int}")]
+        [HttpGet]
+        public ActionResult<List<SoftSkillReference>> GetSoftskillReferenceByUser(int id)
+        {
+            try
+            {
+                return Ok(_testResultService.GetSoftskillReferenceByUser(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
