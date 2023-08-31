@@ -39,6 +39,8 @@ namespace Test_Token
             services.AddSingleton<Database>();
             services.AddSingleton<UserRepo>();
             services.AddSingleton<RoleRepo>();
+            services.AddSingleton<DepartmentRepo>();
+            services.AddSingleton<CompanyRepo>();
             services.AddSingleton<TokenAppService>();
             services.AddSingleton<IUserAppService, UserAppService>();
 
